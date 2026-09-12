@@ -44,8 +44,8 @@
   </style>
 </head>
 <body class="bg-surface text-gray-200 font-sans min-h-screen flex flex-col">
-  <!-- Splash Screen -->
-  <div id="splashScreen" class="fixed inset-0 bg-surface z-50 flex flex-col items-center justify-center transition-opacity duration-700 pointer-events-none">
+    <!-- Splash Screen -->
+  <div id="splashScreen" class="fixed inset-0 bg-surface z-50 flex flex-col items-center justify-center transition-opacity duration-700">
     <div class="flex flex-col items-center gap-4">
       <div class="w-24 h-24 rounded-3xl bg-gradient-to-tr from-primary to-amber-600 flex items-center justify-center shadow-2xl shadow-primary/30 border border-amber-400/40">
         <span class="material-symbols-outlined text-surface text-5xl">flight_takeoff</span>
@@ -66,35 +66,36 @@
     <div class="flex items-center gap-3">
       <div class="bg-surface-container-high px-3 py-1.5 rounded-xl border border-gray-800 text-xs flex items-center gap-1">
         <span class="text-primary font-bold">৳</span>
-        <span id="headerBalance" class="text-white font-bold">0.60</span>
+        <span id="headerBalance" class="text-white font-bold">0.00</span>
       </div>
-      <button onclick="switchTab('deposit-step1')" class="bg-gradient-to-r from-primary to-amber-500 text-surface font-bold text-xs px-3.5 py-2 rounded-xl shadow cursor-pointer">জমা দিন</button>
+      <button type="button" onclick="switchTab('deposit-step1')" class="bg-gradient-to-r from-primary to-amber-500 text-surface font-bold text-xs px-3.5 py-2 rounded-xl shadow cursor-pointer">জমা দিন</button>
       <div onclick="switchTab('profile')" class="w-9 h-9 rounded-xl bg-surface-container-high flex items-center justify-center cursor-pointer border border-gray-700 hover:border-primary">
         <span class="material-symbols-outlined text-primary text-xl">account_circle</span>
       </div>
     </div>
   </header>
 
-  <main class="flex-grow pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">    <!-- Auth Tab -->
-    <section id="tab-auth" class="max-w-md mx-auto pt-10">
+  <main class="flex-grow pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
+        <!-- Auth Tab -->
+    <section id="tab-auth" class="view-section max-w-md mx-auto pt-6">
       <div class="bg-surface-container p-6 rounded-3xl border border-surface-container-high shadow-xl">
         <div class="flex justify-center gap-4 mb-6 border-b border-gray-800 pb-3">
           <button type="button" onclick="toggleAuth('login')" id="btnLoginTab" class="text-sm font-bold text-primary pb-1 border-b-2 border-primary cursor-pointer">লগইন</button>
           <button type="button" onclick="toggleAuth('register')" id="btnRegTab" class="text-sm font-bold text-gray-400 pb-1 cursor-pointer">রেজিস্ট্রেশন</button>
         </div>
         
-        <div id="loginForm" class="flex flex-col gap-3.5">
-          <input type="text" id="logUser" placeholder="ইউজারনেম বা মোবাইল নম্বর" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
-          <input type="password" id="logPass" placeholder="পাসওয়ার্ড" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
-          <button type="button" onclick="handleLogin()" class="w-full py-3 bg-primary text-surface font-black rounded-xl text-sm shadow cursor-pointer hover:opacity-90 active:scale-95 transition-all">লগইন করুন</button>
-        </div>
+        <form id="loginForm" onsubmit="handleLogin(event)" class="flex flex-col gap-3.5">
+          <input type="text" id="logUser" placeholder="ইউজারনেম বা মোবাইল নম্বর" required class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
+          <input type="password" id="logPass" placeholder="পাসওয়ার্ড" required class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
+          <button type="submit" class="w-full py-3 bg-primary text-surface font-black rounded-xl text-sm shadow cursor-pointer hover:opacity-90 active:scale-95 transition-all">লগইন করুন</button>
+        </form>
 
-        <div id="regForm" class="flex flex-col gap-3.5 hidden">
-          <input type="text" id="regName" placeholder="ইউজারনেম (ইউনিক হতে হবে)" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
-          <input type="text" id="regPhone" placeholder="মোবাইল নম্বর" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
-          <input type="password" id="regPass" placeholder="পাসওয়ার্ড দিন" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
-          <button type="button" onclick="handleRegister()" class="w-full py-3 bg-secondary text-surface font-black rounded-xl text-sm shadow cursor-pointer hover:opacity-90 active:scale-95 transition-all">রেজিস্ট্রেশন সম্পন্ন করুন</button>
-        </div>
+        <form id="regForm" onsubmit="handleRegister(event)" class="flex flex-col gap-3.5 hidden">
+          <input type="text" id="regName" placeholder="ইউজারনেম (ইংরেজিতে)" required class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
+          <input type="tel" id="regPhone" placeholder="মোবাইল নম্বর" required class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
+          <input type="password" id="regPass" placeholder="পাসওয়ার্ড দিন" required class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
+          <button type="submit" class="w-full py-3 bg-secondary text-surface font-black rounded-xl text-sm shadow cursor-pointer hover:opacity-90 active:scale-95 transition-all">রেজিস্ট্রেশন সম্পন্ন করুন</button>
+        </form>
       </div>
     </section>
 
@@ -109,15 +110,15 @@
             <div>
               <div class="inline-block bg-gray-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">VIP1</div>
               <div class="text-sm font-black text-white" id="profileUsernameText">User</div>
-              <p class="text-[11px] text-gray-400">যোগদান করেছেন: 2026-07-04</p>
+              <p class="text-[11px] text-gray-400" id="profilePhoneText">01XXXXXXXXX</p>
             </div>
           </div>
-          <button type="button" class="bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-bold px-3 py-1.5 rounded-xl">অ্যাক্টিভ</button>
+          <button type="button" class="bg-green-600/20 text-green-400 border border-green-500/30 text-xs font-bold px-3 py-1.5 rounded-xl">অ্যাক্টিভ</button>
         </div>
         <div class="flex items-center justify-between bg-surface-container-low p-4 rounded-2xl border border-gray-800 mb-4">
           <div>
             <span class="text-xs text-gray-400">মূল ব্যালেন্স</span>
-            <div class="text-xl font-black text-white">৳ <span id="profileBalance">0.60</span></div>
+            <div class="text-xl font-black text-white">৳ <span id="profileBalance">0.00</span></div>
           </div>
           <button type="button" onclick="updateUI()" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-primary cursor-pointer">
             <span class="material-symbols-outlined text-sm">refresh</span>
@@ -128,14 +129,10 @@
           <button type="button" onclick="switchTab('withdraw')" class="py-2.5 bg-surface-container-low border border-gray-700 hover:border-primary text-white font-bold text-xs rounded-xl text-center shadow cursor-pointer">উত্তোলন করুন</button>
         </div>
         <div class="bg-surface-container-low p-4 rounded-2xl border border-gray-800 flex flex-col gap-3">
-          <button type="button" onclick="downloadAppAPK()" class="w-full py-2.5 bg-secondary text-surface font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow cursor-pointer">
-            <span class="material-symbols-outlined text-sm">download</span> FB77 অ্যাপ ডাউনলোড করুন (APK)
-          </button>
           <button type="button" onclick="logoutUser()" class="w-full py-2.5 bg-red-500/20 text-red-400 font-bold rounded-xl text-xs border border-red-500/30 cursor-pointer">লগআউট করুন</button>
         </div>
       </div>
     </section>
-
         <!-- Lobby Tab -->
     <section id="tab-lobby" class="view-section hidden flex flex-col gap-6">
       <div class="flex justify-between items-center bg-surface-container p-4 rounded-2xl border border-surface-container-high">
@@ -144,7 +141,7 @@
           <p class="text-xs text-gray-400">অরজিনাল Aviator এবং Live Crazy Time প্ল্যাটফর্ম</p>
         </div>
         <button type="button" onclick="shareGameLink()" class="bg-surface-container-low border border-gray-700 px-3 py-2 rounded-xl text-xs text-primary font-bold flex items-center gap-1.5 cursor-pointer">
-          <span class="material-symbols-outlined text-sm">share</span> লিংক শেয়ার
+          <span class="material-symbols-outlined text-sm">share</span> শেয়ার
         </button>
       </div>
       <div id="gameGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
@@ -175,9 +172,6 @@
           </div>
           <input type="number" id="depositInputAmount" placeholder="পরিমাণ লিখুন (যেমন: ৫০০)" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
         </div>
-        <div>
-          <input type="text" id="promoCodeInput" placeholder="প্রোমো কোড (ঐচ্ছিক)" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-xs text-white outline-none focus:border-primary"/>
-        </div>
         <div class="bg-surface-container-low p-3.5 rounded-xl border border-gray-800 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <input type="checkbox" id="bonusCheckbox" class="w-4 h-4 accent-primary cursor-pointer"/>
@@ -185,10 +179,9 @@
           </div>
         </div>
         <button type="button" onclick="proceedToTrxIdPage()" class="w-full py-3.5 bg-gradient-to-r from-primary to-amber-500 text-surface font-black rounded-xl text-sm shadow-lg cursor-pointer hover:opacity-90 active:scale-95 transition-all">পরবর্তী ধাপ →</button>
-        <div id="depositStatusBox" class="text-center text-xs font-bold text-amber-400 mt-1"></div>
       </div>
     </section>
-    <!-- Deposit TrxID Step -->
+        <!-- Deposit TrxID Step -->
     <section id="tab-deposit-trx" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full">
       <div class="bg-surface-container p-5 rounded-3xl border border-surface-container-high shadow-xl flex flex-col gap-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-3">
@@ -197,15 +190,15 @@
           <span id="trxDisplayAmt" class="text-xs font-bold text-primary">৳ 0</span>
         </div>
         <div class="bg-surface-container-low p-4 rounded-2xl border border-gray-800 flex flex-col gap-2">
-          <span id="selectedMethodTitle" class="text-xs text-gray-400 font-bold text-amber-400">পার্সোনাল নাম্বারে ক্যাশআউট করুন:</span>
+          <span id="selectedMethodTitle" class="text-xs text-amber-400 font-bold">পার্সোনাল নাম্বারে ক্যাশআউট করুন:</span>
           <div class="flex items-center justify-between bg-black/40 p-3 rounded-xl border border-gray-700">
             <span id="targetAgentNumber" class="text-base font-black text-primary tracking-wider">01519602477</span>
             <button type="button" onclick="copyAgentNumber()" class="text-xs bg-primary text-surface px-2.5 py-1 rounded-lg font-bold cursor-pointer">কপি</button>
           </div>
         </div>
         <div>
-          <label class="text-xs text-gray-400 font-bold block mb-1">TrxID নম্বর দিন</label>
-          <input type="text" id="trxIdInput" placeholder="এখানে TrxID লিখুন" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
+          <label class="text-xs text-gray-400 font-bold block mb-1">TrxID (ট্রানজেকশন আইডি) লিখুন</label>
+          <input type="text" id="trxIdInput" placeholder="এখানে TrxID দিন" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
         </div>
         <button type="button" onclick="finalizeDepositWithTrx()" class="w-full py-3.5 bg-green-600 text-white font-black rounded-xl text-sm shadow-lg cursor-pointer hover:bg-green-500">নিশ্চিত করুন</button>
       </div>
@@ -239,20 +232,13 @@
           <input type="password" id="withdrawConfirmPin" maxlength="6" placeholder="৬ সংখ্যার পিন" class="w-full p-3 rounded-xl bg-surface border border-gray-700 text-sm text-white outline-none"/>
           <button type="button" onclick="executeWithdraw()" class="w-full py-3.5 bg-green-600 text-white font-black rounded-xl text-sm shadow-lg cursor-pointer">উত্তোলন নিশ্চিত করুন</button>
         </div>
-        <div id="withdrawStatusBox" class="text-center text-xs font-bold text-amber-400"></div>
       </div>
     </section>
-    <!-- Aviator Live Game -->
+        <!-- Aviator Live Game -->
     <section id="tab-custom-aviator" class="view-section hidden flex flex-col gap-4 max-w-6xl mx-auto w-full">
       <div class="flex justify-between items-center bg-surface-container p-3 rounded-2xl border border-surface-container-high">
         <button type="button" onclick="switchTab('lobby')" class="bg-surface-container-low px-3 py-1.5 rounded-xl text-xs text-gray-300 border border-gray-700 cursor-pointer">← লবিতে ফিরুন</button>
-        <div class="flex items-center gap-2">
-          <span class="text-xs font-bold text-red-500">✈️ FB77 Aviator Live</span>
-        </div>
-      </div>
-
-      <div id="multiplierHistoryBar" class="flex items-center gap-2 overflow-x-auto bg-surface-container p-2 rounded-xl border border-surface-container-high text-xs">
-        <span class="text-[11px] text-gray-400 font-bold px-1">হিস্ট্রি:</span>
+        <span class="text-xs font-bold text-red-500">✈️ FB77 Aviator Live</span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
@@ -261,7 +247,7 @@
             <div class="flex justify-between items-center bg-[#1a1e29] px-3 py-2 rounded-xl border border-gray-800 text-xs">
               <span class="text-red-500 font-black italic tracking-wider">FB77 Aviator Real Engine</span>
               <div class="flex items-center gap-1 bg-[#12151f] px-2.5 py-1 rounded-lg border border-gray-700">
-                <span id="aviatorTopBalance" class="font-bold text-white">0.60</span>
+                <span id="aviatorTopBalance" class="font-bold text-white">0.00</span>
                 <span class="text-[10px] text-gray-400">BDT</span>
               </div>
             </div>
@@ -282,10 +268,6 @@
                 <div id="finalCrashMultiplier" class="text-5xl font-black text-red-500 tracking-wider mt-1">1.00x</div>
               </div>
 
-              <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
-                <path id="redCarpetPath" d="M 0 100 Q 50 95, 0 100" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round" class="hidden drop-shadow-[0_0_10px_rgba(239,68,68,0.9)]"/>
-              </svg>
-
               <div id="planeIcon" class="absolute z-30 hidden transition-all duration-75 animate-float-plane w-28 h-28 flex items-center justify-center" style="bottom: 5%; left: 2%;">
                 <img src="https://spribe.co/assets/images/games/logo/logo-aviator.svg" alt="Aviator Plane" class="w-full h-full object-contain transform -rotate-12"/>
               </div>
@@ -295,34 +277,22 @@
               <div class="bg-[#0b0d14] p-3 rounded-2xl border border-gray-800 flex flex-col gap-2">
                 <div class="flex justify-between items-center text-[11px]">
                   <span class="text-white font-bold">Bet 1</span>
-                  <span id="p1Status" class="text-primary font-bold">অপেক্ষমাণ</span>
                 </div>
                 <div class="flex gap-2 items-center">
                   <input type="number" id="betInput1" value="10.00" class="w-1/2 p-2 bg-[#1a1e29] rounded-xl text-center text-xs text-white outline-none font-bold"/>
-                  <button type="button" id="betBtn1" onclick="handleCustomBet(1)" class="w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow cursor-pointer">Bet</button>
+                  <button type="button" onclick="handleCustomBet(1)" class="w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow cursor-pointer">Bet</button>
                 </div>
               </div>
               <div class="bg-[#0b0d14] p-3 rounded-2xl border border-gray-800 flex flex-col gap-2">
                 <div class="flex justify-between items-center text-[11px]">
                   <span class="text-white font-bold">Bet 2</span>
-                  <span id="p2Status" class="text-primary font-bold">অপেক্ষমাণ</span>
                 </div>
                 <div class="flex gap-2 items-center">
                   <input type="number" id="betInput2" value="10.00" class="w-1/2 p-2 bg-[#1a1e29] rounded-xl text-center text-xs text-white outline-none font-bold"/>
-                  <button type="button" id="betBtn2" onclick="handleCustomBet(2)" class="w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow cursor-pointer">Bet</button>
+                  <button type="button" onclick="handleCustomBet(2)" class="w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow cursor-pointer">Bet</button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-3">
-          <div class="bg-[#12151f] p-3.5 rounded-3xl border border-gray-800 flex flex-col h-full">
-            <div class="flex justify-between items-center border-b border-gray-800 pb-2 text-xs font-bold">
-              <span class="text-white">লাইভ বেট</span>
-              <span class="text-primary" id="activePlayersCount">প্লেয়ার: ১,২৪০</span>
-            </div>
-            <div id="livePlayersList" class="flex flex-col gap-1.5 overflow-y-auto flex-grow text-[11px] mt-2"></div>
           </div>
         </div>
       </div>
@@ -336,17 +306,11 @@
       <div class="w-full bg-black rounded-3xl overflow-hidden shadow-2xl border border-amber-500/30">
         <iframe src="https://m.youtube.com/embed/live_stream?channel=EvolutionGaming" class="w-full h-[380px] border-0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-      <div class="bg-surface-container p-4 rounded-3xl border border-surface-container-high grid grid-cols-4 gap-2 text-center">
-        <button type="button" onclick="placeCrazyBet('1', 1)" class="bg-blue-600/30 border border-blue-500 text-white font-bold p-3 rounded-xl hover:bg-blue-600/50 cursor-pointer">1 (x1)</button>
-        <button type="button" onclick="placeCrazyBet('2', 2)" class="bg-yellow-600/30 border border-yellow-500 text-white font-bold p-3 rounded-xl hover:bg-yellow-600/50 cursor-pointer">2 (x2)</button>
-        <button type="button" onclick="placeCrazyBet('5', 5)" class="bg-pink-600/30 border border-pink-500 text-white font-bold p-3 rounded-xl hover:bg-pink-600/50 cursor-pointer">5 (x5)</button>
-        <button type="button" onclick="placeCrazyBet('10', 10)" class="bg-purple-600/30 border border-purple-500 text-white font-bold p-3 rounded-xl hover:bg-purple-600/50 cursor-pointer">10 (x10)</button>
-      </div>
     </section>
 
   </main>
 
-  <!-- Live Chat Widget Button -->
+  <!-- Live Chat Button -->
   <div class="fixed bottom-20 right-4 z-50">
     <button type="button" onclick="toggleChatWindow()" class="w-12 h-12 bg-primary rounded-full shadow-2xl flex items-center justify-center text-surface cursor-pointer hover:scale-110 transition-transform">
       <span class="material-symbols-outlined text-2xl">chat</span>
@@ -356,11 +320,11 @@
   <!-- Chat Box Modal -->
   <div id="liveChatModal" class="fixed bottom-24 right-4 z-50 w-80 bg-surface-container border border-surface-container-high rounded-3xl shadow-2xl flex flex-col hidden overflow-hidden">
     <div class="bg-surface-container-high p-3 flex justify-between items-center border-b border-gray-800">
-      <span class="text-xs font-bold text-white flex items-center gap-1">💬 FB77 ২৪/৭ সাপোট বট</span>
+      <span class="text-xs font-bold text-white flex items-center gap-1">💬 FB77 সাপোট বট</span>
       <button type="button" onclick="toggleChatWindow()" class="text-gray-400 text-xs font-bold cursor-pointer">✕</button>
     </div>
     <div id="userChatMessages" class="p-3 h-64 overflow-y-auto flex flex-col gap-2 text-xs text-gray-200">
-      <div class="bg-surface-container-low p-2.5 rounded-xl border border-gray-800"><b>বট:</b> FB77 সাপোটে আপনাকে স্বাগতম! কিভাবে সাহায্য করতে পারি? (ডিপোজিট/উইথড্র/গেম সমস্যা লিখুন)</div>
+      <div class="bg-surface-container-low p-2.5 rounded-xl border border-gray-800"><b>বট:</b> FB77 সাপোটে আপনাকে স্বাগতম! কিভাবে সাহায্য করতে পারি?</div>
     </div>
     <div class="p-2 border-t border-gray-800 flex gap-1.5 bg-surface-container-low">
       <input type="text" id="liveUserChatInput" placeholder="সমস্যাটি লিখুন..." class="w-full p-2 rounded-xl bg-surface border border-gray-700 text-xs text-white outline-none"/>
@@ -380,7 +344,6 @@
     </button>
   </nav>
     <script>
-    // Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyDF1Pbg1I98hzIUrR8ntKjHHTqWgNHKKTo",
       authDomain: "fb77-admin.firebaseapp.com",
@@ -420,7 +383,7 @@
         } else {
           switchTab('auth');
         }
-      }, 1200);
+      }, 1000);
     };
 
     function toggleAuth(mode) {
@@ -437,10 +400,12 @@
       }
     }
 
-    function handleRegister() {
+    function handleRegister(e) {
+      e.preventDefault();
       const name = document.getElementById('regName').value.trim();
       const phone = document.getElementById('regPhone').value.trim();
       const pass = document.getElementById('regPass').value;
+      
       if(!name || !phone || !pass) { alert("সবগুলো ঘর সঠিকভাবে পূরণ করুন!"); return; }
       
       currentUser = { name: name, phone: phone, balance: 100.00 };
@@ -450,12 +415,13 @@
       initAppDashboard();
     }
 
-    function handleLogin() {
+    function handleLogin(e) {
+      e.preventDefault();
       const userField = document.getElementById('logUser').value.trim();
       const passField = document.getElementById('logPass').value;
       if(!userField || !passField) { alert("ইউজারনেম এবং পাসওয়ার্ড দিন!"); return; }
       
-      currentUser = { name: userField, balance: 100.00 };
+      currentUser = { name: userField, phone: "01XXXXXXXXX", balance: 100.00 };
       localStorage.setItem('fb77_user', JSON.stringify(currentUser));
       initAppDashboard();
     }
@@ -475,12 +441,15 @@
       document.getElementById('profileBalance').innerText = balStr;
       document.getElementById('aviatorTopBalance').innerText = balStr;
       document.getElementById('profileUsernameText').innerText = currentUser.name;
+      document.getElementById('profilePhoneText').innerText = currentUser.phone || "N/A";
     }
 
     function switchTab(tabId) {
-      document.querySelectorAll('main > section').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
       const target = document.getElementById('tab-' + tabId);
-      if(target) target.classList.remove('hidden');
+      if(target) {
+        target.classList.remove('hidden');
+      }
       if(tabId === 'custom-aviator') startAviatorGameLoop(); else stopAviatorGameLoop();
       window.scrollTo(0, 0);
     }
@@ -551,6 +520,7 @@
       localStorage.setItem('fb77_user', JSON.stringify(currentUser));
       updateUI();
       alert("ডিপোজিট সফলভাবে প্রসেস করা হয়েছে!");
+      document.getElementById('trxIdInput').value = '';
       switchTab('lobby');
     }
 
@@ -575,8 +545,30 @@
       document.getElementById('displaySavedAccount').innerText = `${num} (${selectedWithdrawGateway})`;
       alert("অ্যাকাউন্ট সেভ হয়েছে!");
     }
-্    // Aviator Game Logic Loop
-    let aviatorState = 'waiting';
+
+    function executeWithdraw() {
+      const amt = parseFloat(document.getElementById('withdrawAmountInput').value);
+      const pin = document.getElementById('withdrawConfirmPin').value.trim();
+      if(!amt || currentUser.balance < amt || pin !== currentUser.withdrawPin) { alert("তথ্য সঠিক নয় বা পর্যাপ্ত ব্যালেন্স নেই!"); return; }
+      
+      currentUser.balance -= amt;
+      localStorage.setItem('fb77_user', JSON.stringify(currentUser));
+
+      const withdrawReq = {
+        id: Date.now(),
+        username: currentUser.name,
+        amount: amt,
+        method: currentUser.withdrawMethod,
+        number: currentUser.withdrawNum,
+        status: 'pending'
+      };
+      db.ref('withdrawals/' + withdrawReq.id).set(withdrawReq);
+
+      updateUI();
+      alert("উত্তোলন নিশ্চিত করা হয়েছে! ৫ মিনিট অপেক্ষা করুন।");
+      switchTab('lobby');
+      }
+          // Aviator Game Loop Functions
     let currentMultiplier = 1.00;
     let crashPoint = 1.00;
     let loopTimer = null;
@@ -592,7 +584,6 @@
     }
 
     function runWaitingPhase() {
-      aviatorState = 'waiting';
       countdownTimer = 5.0;
       currentMultiplier = 1.00;
 
@@ -612,7 +603,6 @@
     }
 
     function startFlyingPhase(crashAt) {
-      aviatorState = 'flying';
       crashPoint = parseFloat(crashAt);
       document.getElementById('waitingBox').classList.add('hidden');
       document.getElementById('flyingBox').classList.remove('hidden');
@@ -637,7 +627,6 @@
     }
 
     function triggerCrash() {
-      aviatorState = 'crashed';
       document.getElementById('flyingBox').classList.add('hidden');
       document.getElementById('crashedBox').classList.remove('hidden');
       document.getElementById('finalCrashMultiplier').innerText = crashPoint.toFixed(2) + "x";
@@ -647,13 +636,14 @@
 
     function handleCustomBet(id) {
       const inputVal = parseFloat(document.getElementById('betInput' + id).value);
-      if(currentUser.balance < inputVal) { alert("পর্যাপ্ত ব্যালেন্স নেই!"); return; }
+      if(!currentUser || currentUser.balance < inputVal) { alert("পর্যাপ্ত ব্যালেন্স নেই!"); return; }
       currentUser.balance -= inputVal;
+      localStorage.setItem('fb77_user', JSON.stringify(currentUser));
       updateUI();
       alert(`Bet ${id} এ ৳${inputVal} ধরা হয়েছে!`);
     }
 
-    // Auto Chat System Functions
+    // Auto Chat Functions
     function toggleChatWindow() {
       document.getElementById('liveChatModal').classList.toggle('hidden');
     }
@@ -664,44 +654,32 @@
       if(!msg) return;
 
       const chatContainer = document.getElementById('userChatMessages');
-      
-      // ইউজার মেসেজ রেন্ডার
       const userMsgDiv = document.createElement('div');
       userMsgDiv.className = "bg-primary/20 text-white p-2.5 rounded-xl border border-primary/30 self-end text-right";
       userMsgDiv.innerHTML = `<b>${currentUser ? currentUser.name : 'User'}:</b> ${msg}`;
       chatContainer.appendChild(userMsgDiv);
 
-      // ফায়ারবেস অ্যাডমিন প্যানেলে মেসেজ পাঠানো
-      const chatData = {
+      db.ref('admin_chats').push({
         username: currentUser ? currentUser.name : 'Guest',
         message: msg,
         timestamp: new Date().toLocaleTimeString()
-      };
-      db.ref('admin_chats').push(chatData);
+      });
 
       input.value = '';
       chatContainer.scrollTop = chatContainer.scrollHeight;
 
-      // অটোমেটিক রোবটিং রিপ্লাই (Auto Bot Response)
       setTimeout(() => {
         const botMsgDiv = document.createElement('div');
         botMsgDiv.className = "bg-surface-container-low p-2.5 rounded-xl border border-gray-800 text-left";
         
-        let reply = "ধন্যবাদ! আপনার মেসেজটি অ্যাডমিন প্যানেলে পাঠানো হয়েছে। খুব শীঘ্রই সাপোর্ট টিম আপনার সাথে যোগাযোগ করবে।";
-        if(msg.includes('ডিপোজিট') || msg.includes('deposit')) {
-          reply = "ডিপোজিট সংক্রান্ত সমস্যা? ডিপোজিট করার পর TrxID দিয়ে নিশ্চিত করুন, ৩-৫ মিনিটের মধ্যে ব্যালেন্স যুক্ত হবে।";
-        } else if(msg.includes('উইথড্র') || msg.includes('withdraw')) {
-          reply = "উইথড্র করতে আপনার অ্যাকাউন্ট নম্বর সেভ করে আবেদন করুন। এটি সাধারণ ১-১০ মিনিটের মধ্যে প্রসেস হয়।";
-        }
+        let reply = "আপনার বার্তাটি অ্যাডমিন প্যানেলে পাঠানো হয়েছে। সাপোর্ট টিম শীঘ্রই এটি দেখবে।";
+        if(msg.includes('ডিপোজিট')) reply = "ডিপোজিট সম্পন্ন করার পর TrxID দিয়ে সাবমিট করুন, ৩-৫ মিনিটের মধ্যে যোগ হবে।";
+        if(msg.includes('উইথড্র')) reply = "উইথড্র সফল হতে ১-১০ মিনিট সময় লাগতে পারে।";
 
         botMsgDiv.innerHTML = `<b>বট:</b> ${reply}`;
         chatContainer.appendChild(botMsgDiv);
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }, 1000);
-    }
-
-    function downloadAppAPK() {
-      alert("FB77 APK ডাউনলোড শুরু হচ্ছে...");
     }
 
     function shareGameLink() {
@@ -715,3 +693,4 @@
   </script>
 </body>
 </html>
+
