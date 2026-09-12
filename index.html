@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html class="dark" lang="bn">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>FB77 - Real Aviator Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#ffb74d",
+            secondary: "#26a69a",
+            surface: "#0b0f19",
+            "surface-container": "#131a29",
+            "surface-container-high": "#1d263a",
+            "surface-container-low": "#0f1522"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: #0b0f19; }
+    ::-webkit-scrollbar-thumb { background: #1d263a; border-radius: 4px; }
+    @keyframes floatPlane {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    .animate-float-plane { animation: floatPlane 0.4s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-surface text-gray-200 font-sans min-h-screen flex flex-col">
+  <div id="splashScreen" class="fixed inset-0 bg-surface z-50 flex flex-col items-center justify-center transition-opacity duration-700">
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-24 h-24 rounded-3xl bg-gradient-to-tr from-primary to-amber-600 flex items-center justify-center shadow-2xl shadow-primary/30 border border-amber-400/40">
+        <span class="material-symbols-outlined text-surface text-5xl">flight_takeoff</span>
+      </div>
+      <div class="text-center">
+        <h1 class="text-3xl font-black bg-gradient-to-r from-primary to-amber-400 bg-clip-text text-transparent tracking-wider">FB77</h1>
+        <p class="text-xs text-gray-400 mt-1 font-semibold tracking-widest uppercase">Real Aviator Platform</p>
+      </div>
+    </div>
+    <div class="absolute bottom-10 text-[11px] text-gray-500">লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</div>
+  </div>
+  <header id="mainHeader" class="hidden fixed top-0 inset-x-0 h-16 bg-surface-container/95 backdrop-blur-md z-40 flex items-center justify-between px-4 md:px-8 border-b border-surface-container-high">
+    <div class="flex items-center gap-3">
+      <span class="text-xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">FB77</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="bg-surface-container-high px-3 py-1.5 rounded-xl border border-gray-800 text-xs flex items-center gap-1">
+        <span class="text-primary font-bold">৳</span>
+        <span id="headerBalance" class="text-white font-bold">0.60</span>
+      </div>
+      <button onclick="switchTab('profile')" class="bg-gradient-to-r from-primary to-amber-500 text-surface font-bold text-xs px-3.5 py-2 rounded-xl shadow">প্রোফাইল</button>
+      <div onclick="switchTab('profile')" class="w-9 h-9 rounded-xl bg-surface-container-high flex items-center justify-center cursor-pointer border border-gray-700 hover:border-primary">
+        <span class="material-symbols-outlined text-primary text-xl">account_circle</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
+    <section id="tab-auth" class="max-w-md mx-auto pt-10">
+      <div class="bg-surface-container p-6 rounded-3xl border border-surface-container-high shadow-xl">
+        <div class="flex justify-center gap-4 mb-6 border-b border-gray-800 pb-3">
+          <button onclick="toggleAuth('login')" id="btnLoginTab" class="text-sm font-bold text-primary pb-1 border-b-2 border-primary">লগইন</button>
+          <button onclick="toggleAuth('register')" id="btnRegTab" class="text-sm font-bold text-gray-400 pb-1">রেজিস্ট্রেশন</button>
+        </div>
+        <div id="loginForm" class="flex flex-col gap-3.5">
+          <input type="text" id="logUser" placeholder="ইউজারনেম বা মোবাইল নম্বর" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none"/>
+          <input type="password" id="logPass" placeholder="পাসওয়ার্ড" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none"/>
+          <button onclick="handleLogin()" class="w-full py-3 bg-primary text-surface font-black rounded-xl text-sm shadow">লগইন করুন</button>
+        </div>
+        <div id="regForm" class="flex flex-col gap-3.5 hidden">
+          <input type="text" id="regName" placeholder="ইউজারনেম (ইউনিক হতে হবে)" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none"/>
+          <input type="text" id="regPhone" placeholder="মোবাইল নম্বর" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none"/>
+          <input type="password" id="regPass" placeholder="পাসওয়ার্ড দিন" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none"/>
+          <button onclick="handleRegister()" class="w-full py-3 bg-secondary text-surface font-black rounded-xl text-sm shadow">রেজিস্ট্রেশন সম্পন্ন করুন</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-profile" class="view-section hidden flex flex-col gap-6 max-w-lg mx-auto w-full">
+      <div class="bg-surface-container p-5 rounded-3xl border border-surface-container-high shadow-xl relative overflow-hidden">
+        <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-secondary p-0.5 flex-shrink-0">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-full h-full object-cover rounded-full"/>
+            </div>
+            <div>
+              <div class="inline-block bg-gray-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">VIP1</div>
+              <div class="text-sm font-black text-white" id="profileUsernameText">t0409960936</div>
+              <p class="text-[11px] text-gray-400">যোগদান করেছেন: 2026-07-04</p>
+            </div>
+          </div>
+          <button class="bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-bold px-3 py-1.5 rounded-xl">অ্যাক্টিভ</button>
+        </div>
+        <div class="flex items-center justify-between bg-surface-container-low p-4 rounded-2xl border border-gray-800 mb-4">
+          <div>
+            <span class="text-xs text-gray-400">মূল ব্যালেন্স</span>
+            <div class="text-xl font-black text-white">৳ <span id="profileBalance">0.60</span></div>
+          </div>
+          <button onclick="updateUI()" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-sm">refresh</span>
+          </button>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mb-5">
+          <button onclick="switchTab('deposit-step1')" class="py-2.5 bg-surface-container-low border border-gray-700 hover:border-primary text-white font-bold text-xs rounded-xl text-center shadow">জমা দিন</button>
+          <button onclick="switchTab('withdraw')" class="py-2.5 bg-surface-container-low border border-gray-700 hover:border-primary text-white font-bold text-xs rounded-xl text-center shadow">উত্তোলন</button>
+          <button onclick="switchTab('withdraw')" class="py-2.5 bg-surface-container-low border border-gray-700 hover:border-primary text-white font-bold text-xs rounded-xl text-center shadow">আমার কার্ড</button>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-2xl border border-gray-800 flex flex-col gap-3">
+          <button onclick="downloadAppAPK()" class="w-full py-2.5 bg-secondary text-surface font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow">
+            <span class="material-symbols-outlined text-sm">download</span> FB77 অ্যাপ ডাউনলোড করুন (APK)
+          </button>
+          <button onclick="logoutUser()" class="w-full py-2.5 bg-red-500/20 text-red-400 font-bold rounded-xl text-xs border border-red-500/30">লগআউট করুন</button>
+        </div>
+      </div>
+    </section>
+    <section id="tab-lobby" class="view-section hidden flex flex-col gap-6">
+      <div class="flex justify-between items-center bg-surface-container p-4 rounded-2xl border border-surface-container-high">
+        <div>
+          <h1 class="text-lg font-bold text-white">গেম লবি (FB77 Live)</h1>
+          <p class="text-xs text-gray-400">অরজিনাল রেড এভিয়েটার প্ল্যাটফর্ম</p>
+        </div>
+        <button onclick="shareGameLink()" class="bg-surface-container-low border border-gray-700 px-3 py-2 rounded-xl text-xs text-primary font-bold flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-sm">share</span> লিংক শেয়ার
+        </button>
+      </div>
+      <div id="gameGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
+    </section>
+
+    <section id="tab-deposit-step1" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full">
+      <div class="bg-surface-container p-5 rounded-3xl border border-surface-container-high shadow-xl flex flex-col gap-4">
+        <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+          <button onclick="switchTab('profile')" class="text-xs text-primary font-bold">← ফিরে যান</button>
+          <h2 class="text-sm font-black text-white uppercase tracking-wider">টাকা জমা দিন (ডিপোজিট)</h2>
+          <span></span>
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 font-bold block mb-2">পেমেন্ট মাধ্যম নির্বাচন করুন</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="selectPaymentMethod('Nagad')" id="pm-Nagad" class="p-3 bg-surface-container-low border-2 border-primary rounded-xl text-xs font-bold text-white">নগদ</button>
+            <button onclick="selectPaymentMethod('Bkash')" id="pm-Bkash" class="p-3 bg-surface-container-low border border-gray-700 rounded-xl text-xs font-bold text-white">বিকাশ</button>
+            <button onclick="selectPaymentMethod('Rocket')" id="pm-Rocket" class="p-3 bg-surface-container-low border border-gray-700 rounded-xl text-xs font-bold text-white">রকেট</button>
+          </div>
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 font-bold block mb-2">পরিমাণ সিলেক্ট করুন</label>
+          <div class="grid grid-cols-3 gap-2 mb-2">
+            <button onclick="setDepositAmt(500)" class="p-2.5 bg-surface-container-low border border-gray-700 rounded-xl text-xs font-bold text-white">৳ ৫০০</button>
+            <button onclick="setDepositAmt(1000)" class="p-2.5 bg-surface-container-low border border-gray-700 rounded-xl text-xs font-bold text-white">৳ ১০০০</button>
+            <button onclick="setDepositAmt(5000)" class="p-2.5 bg-surface-container-low border border-gray-700 rounded-xl text-xs font-bold text-white">৳ ৫০০০</button>
+          </div>
+          <input type="number" id="depositInputAmount" placeholder="পরিমাণ লিখুন" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none"/>
+        </div>
+        <div>
+          <input type="text" id="promoCodeInput" placeholder="প্রোমো কোড (ঐচ্ছিক)" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-xs text-white outline-none"/>
+        </div>
+        <div class="bg-surface-container-low p-3.5 rounded-xl border border-gray-800 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="bonusCheckbox" class="w-4 h-4 accent-primary cursor-pointer"/>
+            <label for="bonusCheckbox" class="text-xs font-bold text-white cursor-pointer">১০০% ডিপোজিট বোনাস নিন</label>
+          </div>
+        </div>
+        <button onclick="proceedToTrxIdPage()" class="w-full py-3.5 bg-gradient-to-r from-primary to-amber-500 text-surface font-black rounded-xl text-sm shadow-lg">পরবর্তী ধাপ</button>
+        <div id="depositStatusBox" class="text-center text-xs font-bold text-amber-400 mt-2"></div>
+      </div>
+    </section>
+
+    <section id="tab-deposit-trx" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full">
+      <div class="bg-surface-container p-5 rounded-3xl border border-surface-container-high shadow-xl flex flex-col gap-4">
+        <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+          <button onclick="switchTab('deposit-step1')" class="text-xs text-primary font-bold">← পেছনে</button>
+          <h2 class="text-sm font-black text-white uppercase tracking-wider">পেমেন্ট ও ট্রানজেকশন</h2>
+          <span id="trxDisplayAmt" class="text-xs font-bold text-primary">৳ 0</span>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-2xl border border-gray-800 flex flex-col gap-2">
+          <span id="selectedMethodTitle" class="text-xs text-gray-400 font-bold text-amber-400">পার্সোনাল নাম্বারে ক্যাশআউট করুন:</span>
+          <div class="flex items-center justify-between bg-black/40 p-3 rounded-xl border border-gray-700">
+            <span id="targetAgentNumber" class="text-base font-black text-primary tracking-wider">01519602477</span>
+            <button onclick="copyAgentNumber()" class="text-xs bg-primary text-surface px-2.5 py-1 rounded-lg font-bold">কপি</button>
+          </div>
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 font-bold block mb-1">TrxID নম্বর দিন</label>
+          <input type="text" id="trxIdInput" placeholder="TrxID লিখুন" class="w-full p-3 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none"/>
+        </div>
+        <button onclick="finalizeDepositWithTrx()" class="w-full py-3.5 bg-green-600 text-white font-black rounded-xl text-sm shadow-lg">নিশ্চিত করুন (Pending)</button>
+      </div>
+    </section>
+
+    <section id="tab-withdraw" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full">
+      <div class="bg-surface-container p-5 rounded-3xl border border-surface-container-high shadow-xl flex flex-col gap-4">
+        <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+          <button onclick="switchTab('profile')" class="text-xs text-primary font-bold">← ফিরে যান</button>
+          <h2 class="text-sm font-black text-white uppercase tracking-wider">টাকা উত্তোলন</h2>
+          <span></span>
+        </div>
+        <div id="bindSection" class="bg-surface-container-low p-4 rounded-2xl border border-gray-800 flex flex-col gap-3">
+          <span class="text-xs font-bold text-amber-400">পেমেন্ট অ্যাকাউন্ট যুক্ত করুন</span>
+          <div class="grid grid-cols-3 gap-2">
+            <button type="button" onclick="selectWithdrawMethod('Bkash')" id="wm-Bkash" class="p-2.5 bg-surface border-2 border-primary rounded-xl text-xs font-bold text-white text-center">বিকাশ</button>
+            <button type="button" onclick="selectWithdrawMethod('Nagad')" id="wm-Nagad" class="p-2.5 bg-surface border border-gray-700 rounded-xl text-xs font-bold text-white text-center">নগদ</button>
+            <button type="button" onclick="selectWithdrawMethod('Rocket')" id="wm-Rocket" class="p-2.5 bg-surface border border-gray-700 rounded-xl text-xs font-bold text-white text-center">রকেট</button>
+          </div>
+          <input type="text" id="withdrawAccountNumber" placeholder="নম্বর দিন" class="w-full p-2.5 rounded-xl bg-surface border border-gray-700 text-xs text-white outline-none"/>
+          <input type="password" id="withdrawSixPin" maxlength="6" placeholder="৬ সংখ্যার পিন" class="w-full p-2.5 rounded-xl bg-surface border border-gray-700 text-xs text-white outline-none"/>
+          <button onclick="saveWithdrawAccount()" class="w-full py-2.5 bg-secondary text-surface font-black rounded-xl text-xs shadow">নম্বর সেভ করুন</button>
+        </div>
+        <div id="requestWithdrawSection" class="bg-surface-container-low p-4 rounded-2xl border border-gray-800 flex flex-col gap-3 hidden">
+          <div class="flex justify-between items-center text-xs bg-surface p-2.5 rounded-xl border border-gray-700">
+            <span class="text-gray-400">অ্যাকাউন্ট:</span>
+            <span id="displaySavedAccount" class="font-bold text-primary">01XXXXXXXXX</span>
+          </div>
+          <input type="number" id="withdrawAmountInput" placeholder="টাকার পরিমাণ" class="w-full p-3 rounded-xl bg-surface border border-gray-700 text-sm text-white outline-none"/>
+          <input type="password" id="withdrawConfirmPin" maxlength="6" placeholder="৬ সংখ্যার পিন" class="w-full p-3 rounded-xl bg-surface border border-gray-700 text-sm text-white outline-none"/>
+          <button onclick="executeWithdraw()" class="w-full py-3.5 bg-green-600 text-white font-black rounded-xl text-sm shadow-lg">উত্তোলন নিশ্চিত করুন (Pending)</button>
+        </div>
+        <div id="withdrawStatusBox" class="mt-2 text-center text-xs font-bold text-amber-400"></div>
+      </div>
+    </section>
+    <section id="tab-custom-aviator" class="view-section hidden flex flex-col gap-4 max-w-6xl mx-auto w-full">
+      <div class="flex justify-between items-center bg-surface-container p-3 rounded-2xl border border-surface-container-high">
+        <button onclick="switchTab('lobby')" class="bg-surface-container-low px-3 py-1.5 rounded-xl text-xs text-gray-300 border border-gray-700">← লবিতে ফিরুন</button>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-red-500">✈️ FB77 Aviator Live</span>
+        </div>
+      </div>
+
+      <div id="multiplierHistoryBar" class="flex items-center gap-2 overflow-x-auto bg-surface-container p-2 rounded-xl border border-surface-container-high scrollbar-none text-xs">
+        <span class="text-[11px] text-gray-400 font-bold px-1">হিস্ট্রি:</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        <div class="lg:col-span-3 flex flex-col gap-3">
+          <div class="bg-[#12151f] p-3.5 rounded-3xl border border-gray-800 flex flex-col gap-3 shadow-2xl">
+            <div class="flex justify-between items-center bg-[#1a1e29] px-3 py-2 rounded-xl border border-gray-800 text-xs">
+              <span class="text-red-500 font-black italic tracking-wider">FB77 Stuntcat Aviator</span>
+              <div class="flex items-center gap-1 bg-[#12151f] px-2.5 py-1 rounded-lg border border-gray-700">
+                <span id="aviatorTopBalance" class="font-bold text-white">0.60</span>
+                <span class="text-[10px] text-gray-400">BDT</span>
+              </div>
+            </div>
+
+            <div class="bg-[#0b0d14] rounded-2xl border border-gray-800 relative h-72 flex flex-col items-center justify-center overflow-hidden shadow-inner">
+              <div class="absolute inset-0 bg-gradient-to-tr from-red-950/40 via-transparent to-transparent"></div>
+              
+              <div id="waitingBox" class="flex flex-col items-center z-20">
+                <span class="text-[11px] text-gray-400 uppercase tracking-widest font-bold">পরবর্তী রাউন্ড শুরু হচ্ছে</span>
+                <div id="countdownNumber" class="text-4xl font-black text-primary mt-1">5.0s</div>
+              </div>
+
+              <div id="flyingBox" class="hidden flex flex-col items-center justify-center z-20">
+                <div id="aviatorMultiplierDisplay" class="text-6xl font-black text-white tracking-wider">1.00x</div>
+                <span class="text-[10px] text-red-500 font-bold mt-1 uppercase tracking-widest">ফ্লাইট উড়ছে...</span>
+              </div>
+
+              <div id="crashedBox" class="hidden flex flex-col items-center justify-center z-20">
+                <span class="text-[11px] text-red-400 uppercase tracking-widest font-bold">ফ্লাইট ক্র্যাশ হয়েছে</span>
+                <div id="finalCrashMultiplier" class="text-5xl font-black text-red-500 tracking-wider mt-1">1.00x</div>
+              </div>
+
+              <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
+                <path id="redCarpetPath" d="M 0 100 Q 50 95, 0 100" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round" class="hidden drop-shadow-[0_0_10px_rgba(239,68,68,0.9)]"/>
+              </svg>
+
+              <div id="planeIcon" class="absolute z-30 hidden transition-all duration-75 animate-float-plane drop-shadow-[0_0_25px_rgba(255,23,68,1)] w-28 h-28 flex items-center justify-center" style="bottom: 5%; left: 2%;">
+                <img src="https://spribe.co/assets/images/games/logo/logo-aviator.svg" alt="Aviator Plane" class="w-full h-full object-contain transform -rotate-12 drop-shadow-lg"/>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="bg-[#0b0d14] p-3 rounded-2xl border border-gray-800 flex flex-col gap-2">
+                <div class="flex justify-between items-center text-[11px]">
+                  <span class="text-white font-bold">Bet 1</span>
+                  <span id="p1Status" class="text-primary font-bold">অপেক্ষমাণ</span>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <input type="number" id="betInput1" value="1.00" class="w-1/2 p-2 bg-[#1a1e29] rounded-xl text-center text-xs text-white outline-none font-bold"/>
+                  <button id="betBtn1" onclick="handleCustomBet(1)" class="w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow">Bet</button>
+                </div>
+                <div class="flex items-center justify-between text-[10px] text-gray-400 mt-1">
+                  <span>অটো ক্যাশআউট:</span>
+                  <input type="number" id="autoCash1" placeholder="2.00x" class="w-16 p-1 bg-[#1a1e29] text-center text-white rounded outline-none"/>
+                </div>
+              </div>
+              <div class="bg-[#0b0d14] p-3 rounded-2xl border border-gray-800 flex flex-col gap-2">
+                <div class="flex justify-between items-center text-[11px]">
+                  <span class="text-white font-bold">Bet 2</span>
+                  <span id="p2Status" class="text-primary font-bold">অপেক্ষমাণ</span>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <input type="number" id="betInput2" value="1.00" class="w-1/2 p-2 bg-[#1a1e29] rounded-xl text-center text-xs text-white outline-none font-bold"/>
+                  <button id="betBtn2" onclick="handleCustomBet(2)" class="w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow">Bet</button>
+                </div>
+                <div class="flex items-center justify-between text-[10px] text-gray-400 mt-1">
+                  <span>অটো ক্যাশআউট:</span>
+                  <input type="number" id="autoCash2" placeholder="2.00x" class="w-16 p-1 bg-[#1a1e29] text-center text-white rounded outline-none"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div class="bg-[#12151f] p-3.5 rounded-3xl border border-gray-800 flex flex-col h-60">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-2 text-xs font-bold">
+              <span class="text-white">লাইভ বেট</span>
+              <span class="text-primary" id="activePlayersCount">চালু প্লেয়ার: ২,২২৩</span>
+            </div>
+            <div id="livePlayersList" class="flex flex-col gap-1.5 overflow-y-auto flex-grow scrollbar-none text-[11px] mt-2"></div>
+          </div>
+
+          <div class="bg-[#12151f] p-3.5 rounded-3xl border border-gray-800 flex flex-col h-64">
+            <div class="border-b border-gray-800 pb-2 text-xs font-bold text-white flex justify-between">
+              <span>💬 গেম লাইভ চ্যাট</span>
+              <span class="text-[10px] text-green-400">● অনলাইন</span>
+            </div>
+            <div id="chatMessages" class="flex flex-col gap-1.5 overflow-y-auto flex-grow scrollbar-none text-[11px] my-2 text-gray-300">
+              <div class="bg-[#1a1e29] p-1.5 rounded-lg"><b>Admin:</b> সবাই খেলায় স্বাগতম! বড় প্রফিট করুন।</div>
+              <div class="bg-[#1a1e29] p-1.5 rounded-lg"><b>Rahim99:</b> ভাই আজ মাল্টিপ্লায়ার অনেক উপরে উঠতেছে!</div>
+            </div>
+            <div class="flex gap-1.5">
+              <input type="text" id="chatInputBox" placeholder="মেসেজ লিখুন..." class="w-full p-2 bg-[#1a1e29] rounded-xl text-xs text-white outline-none"/>
+              <button onclick="sendChatMessage()" class="px-3 bg-secondary text-surface font-bold rounded-xl text-xs">পাঠান</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <nav id="bottomNav" class="hidden fixed bottom-0 inset-x-0 h-16 bg-surface-container/95 backdrop-blur-md z-40 flex items-center justify-around border-t border-surface-container-high px-2">
+    <button onclick="switchTab('lobby')" class="flex flex-col items-center text-gray-400 hover:text-primary">
+      <span class="material-symbols-outlined">casino</span>
+      <span class="text-[10px] font-bold mt-0.5">গেমস লবি</span>
+    </button>
+    <button onclick="switchTab('profile')" class="flex flex-col items-center text-primary">
+      <span class="material-symbols-outlined">account_circle</span>
+      <span class="text-[10px] font-bold mt-0.5">প্রোফাইল</span>
+    </button>
+  </nav>
+
+  <script>
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(freq, type, duration) {
+      if (!audioCtx) return;
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playEngineSound() { playBeep(120, 'sawtooth', 0.1); }
+    function playCashoutSound() { playBeep(880, 'sine', 0.2); }
+    function playCrashSound() { playBeep(80, 'square', 0.4); }
+
+    let currentUser = JSON.parse(localStorage.getItem('fb77_user')) || { name: "t0409960936", balance: 0.60, withdrawMethod: '', withdrawNum: '', withdrawPin: '' };
+    let selectedPaymentGateway = 'Nagad';
+    let pendingDepositAmount = 0;
+    let selectedWithdrawGateway = 'Bkash';
+    let crashHistory = [1.24, 2.50, 1.05, 4.12, 1.80, 15.40, 2.10];
+    let livePlayers = [];
+
+    const paymentAgents = { Nagad: "01519602477", Bkash: "01302348496", Rocket: "01990619879" };
+    const dynamicGameList = [{ title: 'FB77 Stuntcat Aviator', provider: 'crash', custom: true, image: 'https://spribe.co/assets/images/games/logo/logo-aviator.svg', rtp: '98.0%' }];
+
+    window.onload = () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splashScreen');
+        splash.style.opacity = '0';
+        setTimeout(() => splash.remove(), 700);
+        initAppDashboard();
+      }, 1800);
+    };
+
+    function downloadAppAPK() {
+      alert("📥 FB77 অ্যাপ ডাউনলোড শুরু হচ্ছে...");
+      const blob = new Blob(["Simulated FB77 Stuntcat APK package file."], { type: 'application/vnd.android.package-archive' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "FB77_Stuntcat_Aviator.apk";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function shareGameLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => alert("🔗 গেমের লিংক কপি করা হয়েছে!"));
+    }
+
+    function toggleAuth(mode) {
+      if(mode === 'login') {
+        document.getElementById('loginForm').classList.remove('hidden');
+        document.getElementById('regForm').classList.add('hidden');
+        document.getElementById('btnLoginTab').className = "text-sm font-bold text-primary pb-1 border-b-2 border-primary";
+        document.getElementById('btnRegTab').className = "text-sm font-bold text-gray-400 pb-1";
+      } else {
+        document.getElementById('loginForm').classList.add('hidden');
+        document.getElementById('regForm').classList.remove('hidden');
+        document.getElementById('btnRegTab').className = "text-sm font-bold text-secondary pb-1 border-b-2 border-secondary";
+        document.getElementById('btnLoginTab').className = "text-sm font-bold text-gray-400 pb-1";
+      }
+    }
+
+    function handleRegister() {
+      const name = document.getElementById('regName').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const pass = document.getElementById('regPass').value;
+      if(!name || !phone || !pass) { alert("সব তথ্য পূরণ করুন!"); return; }
+      currentUser.name = name;
+      currentUser.balance = 0.60;
+      localStorage.setItem('fb77_user', JSON.stringify(currentUser));
+      initAppDashboard();
+    }
+
+    function handleLogin() {
+      const userField = document.getElementById('logUser').value.trim();
+      if(!userField) { alert("ইউজারনেম লিখুন!"); return; }
+      currentUser.name = userField;
+      localStorage.setItem('fb77_user', JSON.stringify(currentUser));
+      initAppDashboard();
+    }
+
+    function initAppDashboard() {
+      document.getElementById('mainHeader').classList.remove('hidden');
+      document.getElementById('bottomNav').classList.remove('hidden');
+      updateUI();
+      renderGames(dynamicGameList);
+      checkWithdrawBindingStatus();
+      checkDepositBindingStatus();
+      switchTab('lobby');
+    }
+
+    function updateUI() {
+      const savedUser = JSON.parse(localStorage.getItem('fb77_user'));
+      if(savedUser) currentUser = savedUser;
+
+      const balStr = currentUser.balance.toFixed(2);
+      document.getElementById('headerBalance').innerText = balStr;
+      document.getElementById('aviatorTopBalance').innerText = balStr;
+      document.getElementById('profileBalance').innerText = balStr;
+      document.getElementById('profileUsernameText').innerText = currentUser.name;
+    }
+
+    function switchTab(tabId) {
+      updateUI();
+      document.querySelectorAll('main > section').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById('tab-' + tabId);
+      if(target) target.classList.remove('hidden');
+      if(tabId === 'custom-aviator') startAviatorGameLoop(); else stopAviatorGameLoop();
+      if(tabId === 'withdraw') checkWithdrawBindingStatus();
+      if(tabId === 'deposit-step1') checkDepositBindingStatus();
+      window.scrollTo(0, 0);
+    }
+    function renderGames(list) {
+      const grid = document.getElementById('gameGrid');
+      grid.innerHTML = '';
+      list.forEach(g => {
+        const card = document.createElement('div');
+        card.className = "bg-surface-container p-3 rounded-2xl cursor-pointer border border-surface-container-high hover:border-primary transition flex flex-col justify-between";
+        card.onclick = () => { switchTab('custom-aviator'); };
+        card.innerHTML = `
+          <div class="h-28 bg-surface-container-low rounded-xl relative overflow-hidden flex items-center justify-center p-2">
+            <img src="${g.image}" class="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(255,50,50,0.6)]"/>
+            <span class="absolute top-2 left-2 text-[9px] bg-secondary/25 text-secondary px-1.5 py-0.5 rounded uppercase font-bold">RTP ${g.rtp}</span>
+          </div>
+          <div class="mt-2">
+            <h4 class="text-xs font-bold text-gray-200 truncate">${g.title}</h4>
+            <span class="text-[10px] text-primary font-bold">Live Stuntcat ●</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function selectPaymentMethod(method) {
+      selectedPaymentGateway = method;
+      ['Nagad', 'Bkash', 'Rocket'].forEach(m => {
+        document.getElementById('pm-' + m).className = (m === method) ? "p-3 bg-surface-container-low border-2 border-primary rounded-xl text-xs font-bold text-white" : "p-3 bg-surface-container-low border border-gray-700 rounded-xl text-xs font-bold text-white";
+      });
+    }
+
+    function setDepositAmt(amt) { document.getElementById('depositInputAmount').value = amt; }
+
+    function proceedToTrxIdPage() {
+      const customVal = parseFloat(document.getElementById('depositInputAmount').value);
+      if(!customVal || customVal <= 0) { alert("সঠিক পরিমাণ লিখুন!"); return; }
+      pendingDepositAmount = customVal;
+      document.getElementById('trxDisplayAmt').innerText = "৳ " + pendingDepositAmount;
+      document.getElementById('targetAgentNumber').innerText = paymentAgents[selectedPaymentGateway] || "01519602477";
+      document.getElementById('selectedMethodTitle').innerText = `${selectedPaymentGateway} পার্সোনাল নাম্বারে ক্যাশআউট করুন:`;
+      switchTab('deposit-trx');
+    }
+
+    function copyAgentNumber() {
+      navigator.clipboard.writeText(document.getElementById('targetAgentNumber').innerText).then(() => alert("নম্বর কপি করা হয়েছে!"));
+    }
+
+    function finalizeDepositWithTrx() {
+      const trxId = document.getElementById('trxIdInput').value.trim();
+      if(!trxId) { alert("TrxID দিন!"); return; }
+      
+      let finalAmt = pendingDepositAmount;
+      if(document.getElementById('bonusCheckbox').checked) finalAmt *= 2;
+      const promo = document.getElementById('promoCodeInput').value.trim();
+      if(promo === "FB77PRO") finalAmt += 100;
+
+      const depositReq = {
+        id: Date.now(),
+        username: currentUser.name,
+        amount: finalAmt,
+        trxId: trxId,
+        method: selectedPaymentGateway,
+        status: 'pending',
+        time: new Date().toLocaleTimeString()
+      };
+
+      localStorage.setItem('fb77_pending_deposit', JSON.stringify(depositReq));
+      switchTab('deposit-step1');
+      alert("ডিপোজিট রিকোয়েস্ট সফলভাবে জমা হয়েছে! ৫ মিনিট অপেক্ষা করুন, এডমিন যাচাই করে একসেপ্ট করলে ব্যালেন্স যুক্ত হবে।");
+    }
+
+    function checkDepositBindingStatus() {
+      const depReq = JSON.parse(localStorage.getItem('fb77_pending_deposit'));
+      const statusBox = document.getElementById('depositStatusBox');
+      if(depReq && depReq.username === currentUser.name && depReq.status === 'pending') {
+        statusBox.innerText = `⚠️ আপনার ৳${depReq.amount} টাকার ডিপোজিট পেন্ডিং আছে (৫ মিনিট অপেক্ষা করুন)।`;
+      } else if(depReq && depReq.username === currentUser.name && depReq.status === 'rejected') {
+        statusBox.innerText = `❌ ডিপোজিট ব্যর্থ হয়েছে বা ট্রানজেকশন ভুল ছিল।`;
+      } else if(depReq && depReq.username === currentUser.name && depReq.status === 'approved') {
+        statusBox.innerText = `✅ ডিপোজিট সফলভাবে অনুমোদিত হয়েছে!`;
+      } else {
+        statusBox.innerText = "";
+      }
+    }
+
+    function selectWithdrawMethod(method) {
+      selectedWithdrawGateway = method;
+      ['Bkash', 'Nagad', 'Rocket'].forEach(m => {
+        document.getElementById('wm-' + m).className = (m === method) ? "p-2.5 bg-surface border-2 border-primary rounded-xl text-xs font-bold text-white text-center" : "p-2.5 bg-surface border border-gray-700 rounded-xl text-xs font-bold text-white text-center";
+      });
+    }
+
+    function saveWithdrawAccount() {
+      const num = document.getElementById('withdrawAccountNumber').value.trim();
+      const pin = document.getElementById('withdrawSixPin').value.trim();
+      if(!num || pin.length !== 6) { alert("সঠিক নম্বর ও ৬ সংখ্যার পিন দিন!"); return; }
+      currentUser.withdrawMethod = selectedWithdrawGateway;
+      currentUser.withdrawNum = num;
+      currentUser.withdrawPin = pin;
+      localStorage.setItem('fb77_user', JSON.stringify(currentUser));
+      checkWithdrawBindingStatus();
+      alert("অ্যাকাউন্ট সেভ হয়েছে!");
+    }
+
+    function checkWithdrawBindingStatus() {
+      if(currentUser.withdrawNum && currentUser.withdrawPin) {
+        document.getElementById('bindSection').classList.add('hidden');
+        document.getElementById('requestWithdrawSection').classList.remove('hidden');
+        document.getElementById('displaySavedAccount').innerText = `${currentUser.withdrawNum} (${currentUser.withdrawMethod})`;
+      } else {
+        document.getElementById('bindSection').classList.remove('hidden');
+        document.getElementById('requestWithdrawSection').classList.add('hidden');
+      }
+
+      const pendingReq = JSON.parse(localStorage.getItem('fb77_pending_withdraw'));
+      const statusBox = document.getElementById('withdrawStatusBox');
+      if(pendingReq && pendingReq.username === currentUser.name && pendingReq.status === 'pending') {
+        statusBox.innerText = `⚠️ আপনার ৳${pendingReq.amount} টাকার উত্তোলন পেন্ডিং আছে। ৫ মিনিট অপেক্ষা করুন।`;
+      } else if(pendingReq && pendingReq.username === currentUser.name && pendingReq.status === 'rejected') {
+        statusBox.innerText = `❌ উত্তোলন ব্যর্থ হয়েছে। টাকা অ্যাকাউন্টে ফেরত দেওয়া হয়েছে।`;
+      } else if(pendingReq && pendingReq.username === currentUser.name && pendingReq.status === 'approved') {
+        statusBox.innerText = `✅ আপনার উত্তোলন সফল হয়েছে।`;
+      } else {
+        statusBox.innerText = "";
+      }
+    }
+
+    function executeWithdraw() {
+      const amt = parseFloat(document.getElementById('withdrawAmountInput').value);
+      const pin = document.getElementById('withdrawConfirmPin').value.trim();
+      if(!amt || currentUser.balance < amt || pin !== currentUser.withdrawPin) { alert("তথ্য সঠিক নয় বা পর্যাপ্ত ব্যালেন্স নেই!"); return; }
+      
+      currentUser.balance -= amt;
+      localStorage.setItem('fb77_user', JSON.stringify(currentUser));
+
+      const withdrawRequest = {
+        id: Date.now(),
+        username: currentUser.name,
+        method: currentUser.withdrawMethod,
+        number: currentUser.withdrawNum,
+        amount: amt,
+        status: 'pending',
+        time: new Date().toLocaleTimeString()
+      };
+      localStorage.setItem('fb77_pending_withdraw', JSON.stringify(withdrawRequest));
+
+      updateUI();
+      checkWithdrawBindingStatus();
+      alert("উত্তোলনের রিকোয়েস্ট পেন্ডিং এ জমা হয়েছে! ৫ মিনিট অপেক্ষা করুন।");
+    }
+
+    let aviatorState = 'waiting';
+    let currentMultiplier = 1.00;
+    let crashPoint = 1.00;
+    let loopTimer = null;
+    let countdownTimer = 5.0;
+    let activeBet1 = false;
+    let activeBet2 = false;
+
+    function handleCustomBet(id) {
+      const inputVal = parseFloat(document.getElementById('betInput' + id).value);
+      const btn = document.getElementById('betBtn' + id);
+      const statusEl = document.getElementById('p' + id + 'Status');
+
+      if(aviatorState === 'waiting') {
+        if(id === 1 && !activeBet1) {
+          if (currentUser.balance < inputVal) { alert("পর্যাপ্ত ব্যালেন্স নেই!"); return; }
+          currentUser.balance -= inputVal;
+          updateUI();
+          activeBet1 = true;
+          statusEl.innerText = "বেট গৃহিত (৳" + inputVal + ")";
+          btn.innerText = "Cancel";
+          btn.className = "w-1/2 py-2.5 bg-red-600 text-white font-black rounded-xl text-xs shadow";
+        } else if(id === 1 && activeBet1) {
+          currentUser.balance += inputVal;
+          updateUI();
+          activeBet1 = false;
+          statusEl.innerText = "অপেক্ষমাণ";
+          btn.innerText = "Bet";
+          btn.className = "w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow";
+        }
+        if(id === 2 && !activeBet2) {
+          if (currentUser.balance < inputVal) { alert("পর্যাপ্ত ব্যালেন্স নেই!"); return; }
+          currentUser.balance -= inputVal;
+          updateUI();
+          activeBet2 = true;
+          statusEl.innerText = "বেট গৃহিত (৳" + inputVal + ")";
+          btn.innerText = "Cancel";
+          btn.className = "w-1/2 py-2.5 bg-red-600 text-white font-black rounded-xl text-xs shadow";
+        } else if(id === 2 && activeBet2) {
+          currentUser.balance += inputVal;
+          updateUI();
+          activeBet2 = false;
+          statusEl.innerText = "অপেক্ষমাণ";
+          btn.innerText = "Bet";
+          btn.className = "w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow";
+        }
+      } else if(aviatorState === 'flying') {
+        if(id === 1 && activeBet1) cashoutBet(1, inputVal);
+        if(id === 2 && activeBet2) cashoutBet(2, inputVal);
+      }
+    }
+
+    function cashoutBet(id, inputVal) {
+      const wonAmt = inputVal * currentMultiplier;
+      currentUser.balance += wonAmt;
+      updateUI();
+      playCashoutSound();
+      if(id === 1) activeBet1 = false;
+      if(id === 2) activeBet2 = false;
+      document.getElementById('p' + id + 'Status').innerText = "জিতেছেন: ৳" + wonAmt.toFixed(2);
+      const btn = document.getElementById('betBtn' + id);
+      btn.innerText = "Bet";
+      btn.className = "w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow";
+    }
+
+    function startAviatorGameLoop() {
+      if (loopTimer) clearInterval(loopTimer);
+      runWaitingPhase();
+    }
+
+    function stopAviatorGameLoop() {
+      if (loopTimer) clearInterval(loopTimer);
+    }
+
+    function renderHistoryBar() {
+      const bar = document.getElementById('multiplierHistoryBar');
+      bar.innerHTML = '<span class="text-[11px] text-gray-400 font-bold px-1">হিস্ট্রি:</span>';
+      crashHistory.slice(-10).reverse().forEach(val => {
+        const span = document.createElement('span');
+        span.className = `px-2 py-0.5 rounded text-[11px] font-bold ${val >= 2.0 ? 'bg-secondary/20 text-secondary border border-secondary/30' : 'bg-gray-800 text-gray-300'}`;
+        span.innerText = val.toFixed(2) + 'x';
+        bar.appendChild(span);
+      });
+    }
+
+    function generateLivePlayers() {
+      const names = ["Rahim99", "Karim_BD", "Sakib_75", "Tanvir_H", "Nusrat_Akter", "Mehedi_Pro", "Hasan_Ali", "Joya_Ahmed", "Imran_Khan", "Farhana_R"];
+      livePlayers = [];
+      const count = Math.floor(1500 + Math.random() * 800);
+      document.getElementById('activePlayersCount').innerText = "চালু প্লেয়ার: " + count.toLocaleString();
+      for(let i = 0; i < 15; i++) {
+        livePlayers.push({
+          name: names[Math.floor(Math.random() * names.length)] + Math.floor(Math.random()*99),
+          bet: (Math.random() * 500 + 50).toFixed(0),
+          cashed: Math.random() > 0.4 ? (1.1 + Math.random() * 3).toFixed(2) : null
+        });
+      }
+      renderLivePlayersList();
+    }
+
+    function renderLivePlayersList() {
+      const container = document.getElementById('livePlayersList');
+      container.innerHTML = '';
+      livePlayers.forEach(p => {
+        const div = document.createElement('div');
+        div.className = "flex justify-between items-center bg-[#1a1e29] p-1.5 rounded-lg border border-gray-800";
+        div.innerHTML = `
+          <span class="text-gray-300">${p.name}</span>
+          <span class="text-gray-400">৳${p.bet}</span>
+          <span class="${p.cashed ? 'text-secondary font-bold' : 'text-gray-500'}">${p.cashed ? p.cashed + 'x' : 'বেটিং'}</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function runWaitingPhase() {
+      aviatorState = 'waiting';
+      countdownTimer = 5.0;
+      currentMultiplier = 1.00;
+      renderHistoryBar();
+      generateLivePlayers();
+
+      document.getElementById('waitingBox').classList.remove('hidden');
+      document.getElementById('flyingBox').classList.add('hidden');
+      document.getElementById('crashedBox').classList.add('hidden');
+      document.getElementById('planeIcon').classList.add('hidden');
+      document.getElementById('redCarpetPath').classList.add('hidden');
+
+      const nextCrashSim = (1.15 + Math.random() * 3.5).toFixed(2);
+
+      loopTimer = setInterval(() => {
+        countdownTimer -= 0.1;
+        document.getElementById('countdownNumber').innerText = countdownTimer.toFixed(1) + "s";
+        if (countdownTimer <= 0) {
+          clearInterval(loopTimer);
+          startFlyingPhase(parseFloat(nextCrashSim));
+        }
+      }, 100);
+    }
+
+    function startFlyingPhase(forcedCrash) {
+      aviatorState = 'flying';
+      currentMultiplier = 1.00;
+      crashPoint = forcedCrash;
+      document.getElementById('waitingBox').classList.add('hidden');
+      document.getElementById('flyingBox').classList.remove('hidden');
+      document.getElementById('planeIcon').classList.remove('hidden');
+      document.getElementById('redCarpetPath').classList.remove('hidden');
+
+      let progress = 0;
+      loopTimer = setInterval(() => {
+        currentMultiplier += 0.02 + (currentMultiplier * 0.025);
+        progress = Math.min(85, progress + 0.8);
+        playEngineSound();
+        
+        let plane = document.getElementById('planeIcon');
+        plane.style.left = progress + '%';
+        plane.style.bottom = (progress * 0.85) + '%';
+
+        let carpetPath = document.getElementById('redCarpetPath');
+        carpetPath.setAttribute('d', `M 0 100 Q ${progress / 2} ${100 - (progress * 0.4)}, ${progress} ${100 - (progress * 0.85)}`);
+
+        const auto1 = parseFloat(document.getElementById('autoCash1').value);
+        if(activeBet1 && auto1 && currentMultiplier >= auto1) {
+          cashoutBet(1, parseFloat(document.getElementById('betInput1').value));
+        }
+        const auto2 = parseFloat(document.getElementById('autoCash2').value);
+        if(activeBet2 && auto2 && currentMultiplier >= auto2) {
+          cashoutBet(2, parseFloat(document.getElementById('betInput2').value));
+        }
+
+        if (currentMultiplier >= crashPoint) {
+          currentMultiplier = crashPoint;
+          clearInterval(loopTimer);
+          triggerCrash();
+          return;
+        }
+        document.getElementById('aviatorMultiplierDisplay').innerText = currentMultiplier.toFixed(2) + "x";
+      }, 70);
+    }
+
+    function triggerCrash() {
+      aviatorState = 'crashed';
+      playCrashSound();
+      crashHistory.push(crashPoint);
+      
+      document.getElementById('flyingBox').classList.add('hidden');
+      document.getElementById('crashedBox').classList.remove('hidden');
+      document.getElementById('finalCrashMultiplier').innerText = crashPoint.toFixed(2) + "x";
+      document.getElementById('planeIcon').classList.add('hidden');
+      document.getElementById('redCarpetPath').classList.add('hidden');
+
+      [1, 2].forEach(id => {
+        if(eval('activeBet' + id)) {
+          eval('activeBet' + id + ' = false');
+          document.getElementById('p' + id + 'Status').innerText = "ক্র্যাশ হয়েছে";
+          const btn = document.getElementById('betBtn' + id);
+          btn.innerText = "Bet";
+          btn.className = "w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow";
+        }
+      });
+
+      setTimeout(() => { startAviatorGameLoop(); }, 4000);
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatInputBox');
+      const msg = input.value.trim();
+      if(!msg) return;
+      const chatBox = document.getElementById('chatMessages');
+      chatBox.innerHTML += `<div class="bg-[#1a1e29] p-1.5 rounded-lg"><b>${currentUser.name}:</b> ${msg}</div>`;
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function logoutUser() {
+      localStorage.removeItem('fb77_user');
+      switchTab('auth');
+    }
+  </script>
+</body>
+</html>
