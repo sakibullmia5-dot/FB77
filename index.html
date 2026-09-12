@@ -10,7 +10,15 @@
   <script>
     tailwind.config = {
       darkMode: "class",
-      theme: {
+      theme: {  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Firebase SDKs (Compat Version for Live Sync) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+  <script>
+    tailwind.config = {
+    
         extend: {
           colors: {
             primary: "#ffb74d",
@@ -317,6 +325,62 @@
             </div>
             <div id="livePlayersList" class="flex flex-col gap-1.5 overflow-y-auto flex-grow scrollbar-none text-[11px] mt-2"></div>
           </div>
+            <script>
+    // ================= Firebase Init & Live Control =================
+    const firebaseConfig = {
+      apiKey: "AIzaSyDF1Pbg1I98hzIUrR8ntKjHHTqWgNHKKTo",
+      authDomain: "fb77-admin.firebaseapp.com",
+      databaseURL: "https://fb77-admin-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fb77-admin",
+      storageBucket: "fb77-admin.firebasestorage.app",
+      messagingSenderId: "783007838187",
+      appId: "1:783007838187:web:d0d7dde5a9b2a4670273ae",
+      measurementId: "G-4DH0RZF4ZE"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase.database();
+
+    // ১. এডমিন থেকে গেম বন্ধ/চালু চেক (Maintenance Control)
+    db.ref('system_status').on('value', (snapshot) => {
+      const status = snapshot.val();
+      if (status === 'off') {
+        alert("⚠️ মেইনটেন্যান্সের কারণে গেমটি বর্তমানে বন্ধ রয়েছে!");
+        document.body.style.display = 'none';
+      } else {
+        document.body.style.display = 'flex';
+      }
+    });
+
+    // ২. এডমিন প্যানেল থেকে স্লাইডার কন্ট্রোল (Live RTP & Agent Numbers)
+    db.ref('settings').on('value', (snapshot) => {
+      const settings = snapshot.val();
+      if (settings) {
+        if (settings.crash_slider) window.adminCrashSliderValue = settings.crash_slider;
+        if (settings.agent_bkash) paymentAgents.Bkash = settings.agent_bkash;
+        if (settings.agent_nagad) paymentAgents.Nagad = settings.agent_nagad;
+      }
+    });
+
+    // ৩. রিয়েল-টাইম ইউজারের ব্যালেন্স সিঙ্ক
+    let currentUserData = JSON.parse(localStorage.getItem('fb77_user')) || { name: "t0409960936" };
+    if (currentUserData && currentUserData.name) {
+      db.ref('users/' + currentUserData.name + '/balance').on('value', (snapshot) => {
+        const liveBal = snapshot.val();
+        if (liveBal !== null) {
+          currentUserData.balance = liveBal;
+          localStorage.setItem('fb77_user', JSON.stringify(currentUserData));
+          if (typeof updateUI === 'function') updateUI();
+        }
+      });
+    }
+    // ================================================================
+
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(freq, type, duration) {
+      
 
           <div class="bg-[#12151f] p-3.5 rounded-3xl border border-gray-800 flex flex-col h-64">
             <div class="border-b border-gray-800 pb-2 text-xs font-bold text-white flex justify-between">
