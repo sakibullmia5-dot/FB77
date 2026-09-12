@@ -379,7 +379,9 @@
     // ================================================================
 
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    function playBeep(freq, type, duration) {
+    function playBeep(freq, type, duration) {      // ফায়ারবেস ডাটাবেসে ডিপোজিট পাঠানো
+      db.ref('deposits/' + depositReq.id).set(depositReq);
+      
       
 
           <div class="bg-[#12151f] p-3.5 rounded-3xl border border-gray-800 flex flex-col h-64">
@@ -431,6 +433,9 @@
     function playEngineSound() { playBeep(120, 'sawtooth', 0.1); }
     function playCashoutSound() { playBeep(880, 'sine', 0.2); }
     function playCrashSound() { playBeep(80, 'square', 0.4); }
+            // ফায়ারবেস ডাটাবেসে উইথড্র পাঠানো
+      db.ref('withdrawals/' + withdrawRequest.id).set(withdrawRequest);
+    
 
     let currentUser = JSON.parse(localStorage.getItem('fb77_user')) || { name: "t0409960936", balance: 0.60, withdrawMethod: '', withdrawNum: '', withdrawPin: '' };
     let selectedPaymentGateway = 'Nagad';
@@ -522,7 +527,8 @@
       document.getElementById('profileUsernameText').innerText = currentUser.name;
     }
 
-    function switchTab(tabId) {
+    function switchTab(tabId) {const nextCrashSim = (1.15 + Math.random() * 3.5).toFixed(2);
+                               
       updateUI();
       document.querySelectorAll('main > section').forEach(el => el.classList.add('hidden'));
       const target = document.getElementById('tab-' + tabId);
