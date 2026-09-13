@@ -744,7 +744,18 @@
       const depositReq = {
         id: Date.now(),
         phone: currentUser.phone,
-       অ    function renderDepositRecords(data) {
+        username: currentUser.name,
+        amount: pendingDepositAmount,
+        trxId: trxId,
+        method: selectedPaymentGateway,
+        status: 'pending',
+        timestamp: new Date().toLocaleString()
+      };
+
+      if(db) db.ref('deposits/' + depositReq.id).set(depositReq);
+      alert("ডিপোজিট রিকোয়েস্ট জমা হয়েছে! এডমিন অনুমোদনের পর ব্যালেন্স যুক্ত হবে।");
+      switchTab('deposit-records');
+    }    function renderDepositRecords(data) {
       const container = document.getElementById('depositRecordsList');
       if(!container) return;
       container.innerHTML = '';
@@ -1069,3 +1080,5 @@
   </script>
 </body>
 </html>
+
+    
