@@ -28,7 +28,7 @@
       }
     }
   </script>
-  <style>
+    <style>
     ::-webkit-scrollbar { width: 4px; height: 4px; }
     ::-webkit-scrollbar-track { background: #0b0f19; }
     ::-webkit-scrollbar-thumb { background: #1d263a; border-radius: 4px; }
@@ -107,7 +107,7 @@
         font-size: 0.8rem;
         border-bottom: 1px solid #1a1c26;
     }
-        .mult-badge {
+    .mult-badge {
         background: rgba(40, 167, 69, 0.2);
         color: #28a745;
         padding: 2px 6px;
@@ -315,7 +315,8 @@
     <h2 class="text-2xl font-black text-white mb-2">অ্যাাকাউন্ট ব্লকড!</h2>
     <p class="text-sm text-gray-400 max-w-md">আপনাকে এডমিন কর্তৃক ব্লক করা হয়েছে। আপনি গেমটি অ্যাক্সেস করতে পারবেন না।</p>
   </div>
-    <!-- Main Header -->
+
+  <!-- Main Header -->
   <header id="mainHeader" class="hidden fixed top-0 inset-x-0 h-16 bg-surface-container/95 backdrop-blur-md z-40 flex items-center justify-between px-4 md:px-8 border-b border-surface-container-high">
     <div class="flex items-center gap-3">
       <span class="text-xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">FB77</span>
@@ -331,6 +332,7 @@
       </div>
     </div>
   </header>
+
   <main class="flex-grow pt-8 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
     <!-- Auth Section -->
     <section id="tab-auth" class="view-section min-h-[80vh] flex flex-col items-center justify-center">
@@ -369,8 +371,7 @@
         </div>
       </div>
     </section>
-
-    <!-- Profile Section -->
+        <!-- Profile Section -->
     <section id="tab-profile" class="view-section hidden flex flex-col gap-6 max-w-lg mx-auto w-full pt-16">
       <div class="bg-surface-container p-5 rounded-3xl border border-surface-container-high shadow-xl relative overflow-hidden">
         <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
@@ -416,8 +417,9 @@
           <button onclick="logoutUser()" class="w-full py-2.5 bg-red-500/20 text-red-400 font-bold rounded-xl text-xs border border-red-500/30">লগআউট করুন</button>
         </div>
       </div>
-            </section>
-               <!-- Lobby Section -->
+    </section>
+
+    <!-- Lobby Section -->
     <section id="tab-lobby" class="view-section hidden flex flex-col gap-6 pt-16">
       <div id="dynamicBanner" class="w-full h-32 md:h-48 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-surface-container-high overflow-hidden relative flex items-center p-6">
         <div>
@@ -436,8 +438,7 @@
       </div>
       <div id="gameGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5"></div>
     </section>
-
-    <!-- Deposit Step 1 -->
+        <!-- Deposit Step 1 -->
     <section id="tab-deposit-step1" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full pt-16">
       <div class="bg-[#0e1621] p-5 rounded-3xl border border-gray-800 shadow-xl flex flex-col gap-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-3">
@@ -508,7 +509,8 @@
         <button onclick="finalizeDepositWithTrx()" class="w-full py-3.5 bg-emerald-600 text-white font-black rounded-xl text-sm shadow-lg">নিশ্চিত</button>
       </div>
     </section>
-        <!-- Deposit Records Page -->
+
+    <!-- Deposit Records Page -->
     <section id="tab-deposit-records" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full pt-16">
       <div class="bg-[#0e1621] p-5 rounded-3xl border border-gray-800 shadow-xl flex flex-col gap-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-3">
@@ -574,7 +576,7 @@
       <div class="flex justify-between items-center bg-surface-container p-3 rounded-2xl border border-surface-container-high mb-2">
         <button onclick="switchTab('lobby')" class="bg-surface-container-low px-3 py-1.5 rounded-xl text-xs text-gray-300 border border-gray-700">← লবিতে ফিরুন</button>
         <div class="flex items-center gap-2">
-          <span class="text-xs font-bold text-red-500">✈️ FB77 Live Canvas Aviator</span>
+          <span class="text-xs font-bold text-red-500">✈️ FB77 Live Realtime Aviator</span>
         </div>
       </div>
 
@@ -621,10 +623,10 @@
                                 <button class="btn-stepper" onclick="adjustBet(1, 1)">+</button>
                             </div>
                             <div class="quick-amounts">
-                                <button class="btn-quick" onclick="setBet(1, 10)">10</button>
-                                <button class="btn-quick" onclick="setBet(1, 50)">50</button>
                                 <button class="btn-quick" onclick="setBet(1, 100)">100</button>
+                                <button class="btn-quick" onclick="setBet(1, 200)">200</button>
                                 <button class="btn-quick" onclick="setBet(1, 500)">500</button>
+                                <button class="btn-quick" onclick="setBet(1, 10000)">10,000</button>
                             </div>
                         </div>
                         <button class="btn-bet" id="btn1"><span>Bet</span><span>10.00 BDT</span></button>
@@ -639,10 +641,10 @@
                                 <button class="btn-stepper" onclick="adjustBet(2, 1)">+</button>
                             </div>
                             <div class="quick-amounts">
-                                <button class="btn-quick" onclick="setBet(2, 10)">10</button>
-                                <button class="btn-quick" onclick="setBet(2, 50)">50</button>
                                 <button class="btn-quick" onclick="setBet(2, 100)">100</button>
+                                <button class="btn-quick" onclick="setBet(2, 200)">200</button>
                                 <button class="btn-quick" onclick="setBet(2, 500)">500</button>
+                                <button class="btn-quick" onclick="setBet(2, 10000)">10,000</button>
                             </div>
                         </div>
                         <button class="btn-bet" id="btn2"><span>Bet</span><span>10.00 BDT</span></button>
@@ -778,7 +780,8 @@
         });
       }
     }
-          function downloadAppAPK() {
+
+    function downloadAppAPK() {
       alert("📥 FB77 অ্যাপ ডাউনলোড শুরু হচ্ছে...");
       const downloadUrl = "https://sakibullmia5-dot.github.io/FB77/";
       const a = document.createElement('a');
@@ -946,8 +949,7 @@
       isLoggedIn = false;
       showAuthOnly();
     }
-
-    function initAppDashboard() {
+          function initAppDashboard() {
       document.getElementById('mainHeader').classList.remove('hidden');
       document.getElementById('bottomNav').classList.remove('hidden');
       updateUI();
@@ -985,8 +987,9 @@
       }
       if(tabId === 'withdraw') checkWithdrawBindingStatus();
       window.scrollTo(0, 0);
-      }
-          function renderGames(list) {
+    }
+
+    function renderGames(list) {
       const grid = document.getElementById('gameGrid');
       grid.innerHTML = '';
       list.forEach(g => {
@@ -1179,8 +1182,49 @@
       if(db) db.ref('withdraws/' + withdrawRequest.id).set(withdrawRequest);
 
       alert("উত্তোলনের রিকোয়েস্ট জমা হয়েছে!");
-      }
-          // Canvas Engine Logic
+         }
+          // --- Audio Synth Engine ---
+    let audioCtx = null;
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    }
+
+    function playSound(type) {
+        if (!audioCtx) return;
+        try {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            if (type === 'beep') {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.1);
+            } else if (type === 'crash') {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.4);
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.4);
+            }
+        } catch(e){}
+    }
+
+    // Canvas Engine Logic (Vector Real Aviator Red Plane)
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const statusText = document.getElementById('statusText');
@@ -1199,12 +1243,6 @@
         canvas.height = rect.height;
     }
     window.addEventListener('resize', resizeCanvas);
-
-    const planeImage = new Image();
-    planeImage.crossOrigin = "Anonymous";
-    planeImage.src = 'https://spribe.co/assets/images/games/logo/logo-aviator.svg';
-    let isImageLoaded = false;
-    planeImage.onload = () => { isImageLoaded = true; };
 
     let gameState = 'WAITING';
     let multiplier = 1.00;
@@ -1266,6 +1304,7 @@
             timeLeft -= 0.1;
             timerEl.textContent = timeLeft.toFixed(1);
             progressBar.style.width = ((timeLeft / 5.0) * 100) + '%';
+            if (Math.abs(timeLeft % 1) < 0.05) playSound('beep');
 
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
@@ -1301,6 +1340,7 @@
                 gameState = 'CRASHED';
                 statusText.textContent = 'FLEW AWAY!';
                 statusText.classList.add('flew-away');
+                playSound('crash');
                 addHistory(crashPoint);
 
                 isBet1Placed = false;
@@ -1322,17 +1362,75 @@
         }
 
         requestAnimationFrame(animate);
-    }
+      }
+          // --- Vector Red Aviator Plane with Rotating Propeller ---
+    function drawRealAviatorPlane(ctx, time) {
+        ctx.save();
+        ctx.scale(0.85, 0.85);
 
-    function drawFallbackPlane(ctx) {
-        ctx.fillStyle = '#e50914';
+        // Plane Tail Flame / Smoke
         ctx.beginPath();
-        ctx.moveTo(25, 0);
-        ctx.lineTo(-20, -12);
-        ctx.lineTo(-12, 0);
-        ctx.lineTo(-20, 12);
+        ctx.fillStyle = "rgba(255, 69, 0, 0.6)";
+        ctx.moveTo(-35, 0);
+        ctx.lineTo(-50 - Math.random() * 10, -5);
+        ctx.lineTo(-50 - Math.random() * 10, 5);
         ctx.closePath();
         ctx.fill();
+
+        // Main Body (Fuselage)
+        ctx.fillStyle = '#e50914';
+        ctx.beginPath();
+        ctx.moveTo(30, 0);
+        ctx.bezierCurveTo(20, -14, -20, -14, -35, -4);
+        ctx.lineTo(-35, 4);
+        ctx.bezierCurveTo(-20, 14, 20, 14, 30, 0);
+        ctx.fill();
+
+        // Cockpit Glass
+        ctx.fillStyle = '#111';
+        ctx.beginPath();
+        ctx.ellipse(5, -4, 10, 5, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.beginPath();
+        ctx.ellipse(7, -5, 4, 2, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Wing
+        ctx.fillStyle = '#b30006';
+        ctx.beginPath();
+        ctx.moveTo(10, 2);
+        ctx.lineTo(-12, 16);
+        ctx.lineTo(-5, 16);
+        ctx.lineTo(18, 2);
+        ctx.closePath();
+        ctx.fill();
+
+        // Tail
+        ctx.beginPath();
+        ctx.moveTo(-28, -2);
+        ctx.lineTo(-38, -16);
+        ctx.lineTo(-30, -16);
+        ctx.lineTo(-22, -2);
+        ctx.closePath();
+        ctx.fill();
+
+        // Propeller Nose Cap
+        ctx.fillStyle = '#111';
+        ctx.beginPath();
+        ctx.arc(31, 0, 4, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Animated Rotating Propeller Blur
+        let propAngle = time * 45;
+        ctx.save();
+        ctx.translate(33, 0);
+        ctx.rotate(propAngle);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillRect(-1.5, -16, 3, 32);
+        ctx.restore();
+
+        ctx.restore();
     }
 
     function drawScene(p, elapsedTime) {
@@ -1375,29 +1473,12 @@
         ctx.fill();
 
         ctx.save();
-        
         let floatY = (gameState === 'FLYING') ? Math.sin(elapsedTime * 14) * 2.5 : 0;
         ctx.translate(endX, endY + floatY);
         ctx.shadowColor = carpetColor;
         ctx.shadowBlur = 12;
 
-        if (isImageLoaded && planeImage.complete && planeImage.naturalWidth !== 0) {
-            const cropX = 0;
-            const cropY = 0;
-            const cropWidth = planeImage.width;
-            const cropHeight = planeImage.height * 0.58;
-
-            const renderWidth = 80;
-            const renderHeight = 42;
-
-            ctx.drawImage(
-                planeImage,
-                cropX, cropY, cropWidth, cropHeight,
-                -renderWidth / 2, -renderHeight / 2, renderWidth, renderHeight
-            );
-        } else {
-            drawFallbackPlane(ctx);
-        }
+        drawRealAviatorPlane(ctx, elapsedTime);
         ctx.restore();
     }
 
@@ -1416,6 +1497,7 @@
     }
 
     function handleBetAction(btn, num) {
+        initAudio();
         let betInput = document.getElementById('bet' + num);
         let amount = parseFloat(betInput.value);
         if (isNaN(amount) || amount <= 0) amount = 10.00;
