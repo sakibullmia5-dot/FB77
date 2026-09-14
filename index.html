@@ -32,12 +32,267 @@
     ::-webkit-scrollbar { width: 4px; height: 4px; }
     ::-webkit-scrollbar-track { background: #0b0f19; }
     ::-webkit-scrollbar-thumb { background: #1d263a; border-radius: 4px; }
-    @keyframes floatPlane {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-4px) rotate(1deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
+    
+    .aviator-wrapper {
+        width: 100%;
+        background-color: #14161d;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+        border: 1px solid #252836;
     }
-    .animate-float-plane { animation: floatPlane 0.4s ease-in-out infinite; }
+    .top-header-game {
+        background: #0f1015;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #202330;
+    }
+    .game-logo {
+        font-size: 1.5rem;
+        font-weight: 900;
+        font-style: italic;
+        color: #e50914;
+    }
+    .game-user-balance {
+        background: #000;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.95rem;
+        color: #28a745;
+        font-weight: bold;
+        border: 1px solid #28a745;
+    }
+    .main-game-container {
+        display: flex;
+        flex-direction: row;
+        min-height: 480px;
+    }
+    .left-sidebar {
+        width: 250px;
+        background: #0f1015;
+        border-right: 1px solid #202330;
+        display: flex;
+        flex-direction: column;
+    }
+    .sidebar-tabs {
+        display: flex;
+        background: #14161d;
+    }
+    .tab {
+        flex: 1;
+        padding: 10px;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #888;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+    }
+    .tab.active {
+        color: #fff;
+        border-bottom: 2px solid #e50914;
+        background: #0f1015;
+    }
+    .bets-list {
+        flex: 1;
+        overflow-y: auto;
+        max-height: 420px;
+    }
+    .bet-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-bottom: 1px solid #1a1c26;
+    }
+    .mult-badge {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+        padding: 2px 6px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+    .game-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        gap: 12px;
+    }
+    .history-bar {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+    }
+    .history-item {
+        background: #202330;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+    .canvas-area {
+        position: relative;
+        flex: 1;
+        background: #000;
+        border-radius: 10px;
+        overflow: hidden;
+        min-height: 300px;
+        border: 1px solid #2a1219;
+    }
+    canvas#gameCanvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .overlay-status {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        pointer-events: none;
+    }
+    .multiplier-text {
+        font-size: 3.8rem;
+        font-weight: 900;
+        color: #ffffff;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+    .countdown-text {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #ffcc00;
+    }
+    .progress-bar-container {
+        width: 200px;
+        height: 6px;
+        background: #333;
+        border-radius: 3px;
+        margin: 10px auto 0;
+        overflow: hidden;
+    }
+    .progress-bar {
+        width: 100%;
+        height: 100%;
+        background: #e50914;
+        transition: width 0.1s linear;
+    }
+    .flew-away {
+        color: #e50914 !important;
+    }
+    .controls-area {
+        display: flex;
+        gap: 12px;
+    }
+    .bet-panel {
+        flex: 1;
+        background: #1c1f2b;
+        padding: 12px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #2a2e3f;
+        gap: 10px;
+    }
+    .bet-controls-left {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+    }
+    .amount-adjuster {
+        display: flex;
+        align-items: center;
+        background: #0f1015;
+        border-radius: 20px;
+        padding: 2px 8px;
+        border: 1px solid #32374a;
+        justify-content: space-between;
+    }
+    .btn-stepper {
+        background: #252836;
+        color: #aaa;
+        border: none;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+    }
+    .btn-stepper:hover { background: #3a3e54; color: #fff; }
+    .amount-adjuster input {
+        width: 70px;
+        background: transparent;
+        border: none;
+        color: #fff;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: bold;
+        outline: none;
+    }
+    .quick-amounts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+    .btn-quick {
+        background: #14161d;
+        border: 1px solid #2a2e3f;
+        color: #888;
+        border-radius: 12px;
+        padding: 4px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .btn-quick:hover { background: #252836; color: #fff; }
+    .btn-bet {
+        width: 120px;
+        height: 75px;
+        background: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        line-height: 1.2;
+    }
+    .btn-bet:disabled {
+        background: #444 !important;
+        box-shadow: none !important;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+    .btn-cashout {
+        background: #d37c00 !important;
+        box-shadow: 0 4px 12px rgba(211, 124, 0, 0.4) !important;
+    }
+    .btn-waiting {
+        background: #d9534f !important;
+    }
+    @media (max-width: 768px) {
+        .main-game-container { flex-direction: column-reverse; }
+        .left-sidebar { width: 100%; height: 160px; }
+        .controls-area { flex-direction: column; }
+    }
   </style>
 </head>
   <body class="bg-surface text-gray-200 font-sans min-h-screen flex flex-col">
@@ -77,7 +332,6 @@
     </div>
   </header>
       <main class="flex-grow pt-8 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
-    
     <!-- Auth Section -->
     <section id="tab-auth" class="view-section min-h-[80vh] flex flex-col items-center justify-center">
       <div class="w-full max-w-md bg-surface-container p-6 rounded-3xl border border-surface-container-high shadow-2xl">
@@ -162,8 +416,8 @@
           <button onclick="logoutUser()" class="w-full py-2.5 bg-red-500/20 text-red-400 font-bold rounded-xl text-xs border border-red-500/30">লগআউট করুন</button>
         </div>
       </div>
-    </section>
-            <!-- Lobby Section -->
+  </section>
+                  <!-- Lobby Section -->
     <section id="tab-lobby" class="view-section hidden flex flex-col gap-6 pt-16">
       <div id="dynamicBanner" class="w-full h-32 md:h-48 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-surface-container-high overflow-hidden relative flex items-center p-6">
         <div>
@@ -265,7 +519,8 @@
         <div id="depositRecordsList" class="flex flex-col gap-3"></div>
       </div>
     </section>
-            <!-- Bonus Claim Center -->
+
+    <!-- Bonus Claim Center -->
     <section id="tab-bonus-center" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full pt-16">
       <div class="bg-[#0e1621] p-5 rounded-3xl border border-gray-800 shadow-xl flex flex-col gap-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-3">
@@ -314,99 +569,92 @@
         </div>
       </div>
     </section>
-            <!-- Aviator Game Section -->
+            <!-- Integrated Realtime Canvas Aviator Game Section -->
     <section id="tab-custom-aviator" class="view-section hidden flex flex-col gap-4 max-w-6xl mx-auto w-full pt-16">
-      <div class="flex justify-between items-center bg-surface-container p-3 rounded-2xl border border-surface-container-high">
+      <div class="flex justify-between items-center bg-surface-container p-3 rounded-2xl border border-surface-container-high mb-2">
         <button onclick="switchTab('lobby')" class="bg-surface-container-low px-3 py-1.5 rounded-xl text-xs text-gray-300 border border-gray-700">← লবিতে ফিরুন</button>
         <div class="flex items-center gap-2">
-          <span class="text-xs font-bold text-red-500">✈️ FB77 Aviator Live</span>
+          <span class="text-xs font-bold text-red-500">✈️ FB77 Live Canvas Aviator</span>
         </div>
       </div>
 
-      <div id="multiplierHistoryBar" class="flex items-center gap-2 overflow-x-auto bg-surface-container p-2 rounded-xl border border-surface-container-high scrollbar-none text-xs">
-        <span class="text-[11px] text-gray-400 font-bold px-1">হিস্ট্রি:</span>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div class="lg:col-span-3 flex flex-col gap-3">
-          <div class="bg-[#12151f] p-3.5 rounded-3xl border border-gray-800 flex flex-col gap-3 shadow-2xl">
-            <div class="flex justify-between items-center bg-[#1a1e29] px-3 py-2 rounded-xl border border-gray-800 text-xs">
-              <span class="text-red-500 font-black italic tracking-wider">FB77 Stuntcat Aviator</span>
-              <div class="flex items-center gap-1 bg-[#12151f] px-2.5 py-1 rounded-lg border border-gray-700">
-                <span id="aviatorTopBalance" class="font-bold text-white">0.00</span>
-                <span class="text-[10px] text-gray-400">BDT</span>
-              </div>
-            </div>
-
-            <div class="bg-[#0b0d14] rounded-2xl border border-gray-800 relative h-72 flex flex-col items-center justify-center overflow-hidden shadow-inner">
-              <div class="absolute inset-0 bg-gradient-to-tr from-red-950/40 via-transparent to-transparent"></div>
-              
-              <div id="waitingBox" class="flex flex-col items-center z-20">
-                <span class="text-[11px] text-gray-400 uppercase tracking-widest font-bold">পরবর্তী রাউন্ড শুরু হচ্ছে</span>
-                <div id="countdownNumber" class="text-4xl font-black text-primary mt-1">5.0s</div>
-              </div>
-
-              <div id="flyingBox" class="hidden flex flex-col items-center justify-center z-20">
-                <div id="aviatorMultiplierDisplay" class="text-6xl font-black text-white tracking-wider">1.00x</div>
-                <span class="text-[10px] text-red-500 font-bold mt-1 uppercase tracking-widest">ফ্লাইট উড়ছে...</span>
-              </div>
-
-              <div id="crashedBox" class="hidden flex flex-col items-center justify-center z-20">
-                <span class="text-[11px] text-red-400 uppercase tracking-widest font-bold">ফ্লাইট ক্র্যাশ হয়েছে</span>
-                <div id="finalCrashMultiplier" class="text-5xl font-black text-red-500 tracking-wider mt-1">1.00x</div>
-              </div>
-
-              <div id="planeIcon" class="absolute z-30 hidden transition-all duration-75 animate-float-plane w-28 h-28 flex items-center justify-center" style="bottom: 5%; left: 2%;">
-                <img src="https://spribe.co/assets/images/games/logo/logo-aviator.svg" alt="Aviator Plane" class="w-full h-full object-contain transform -rotate-12"/>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <!-- Bet Box 1 -->
-              <div class="bg-[#0b0d14] p-3 rounded-2xl border border-gray-800 flex flex-col gap-2">
-                <div class="flex justify-between items-center text-[11px]">
-                  <span class="text-white font-bold">Bet 1</span>
-                  <span id="p1Status" class="text-primary font-bold">অপেক্ষমাণ</span>
-                </div>
-                <div class="flex gap-2 items-center">
-                  <input type="number" id="betInput1" value="10" class="w-1/2 p-2 bg-[#1a1e29] rounded-xl text-center text-xs text-white outline-none font-bold"/>
-                  <button id="betBtn1" onclick="handleCustomBet(1)" class="w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow">BET</button>
-                </div>
-              </div>
-              <!-- Bet Box 2 -->
-              <div class="bg-[#0b0d14] p-3 rounded-2xl border border-gray-800 flex flex-col gap-2">
-                <div class="flex justify-between items-center text-[11px]">
-                  <span class="text-white font-bold">Bet 2</span>
-                  <span id="p2Status" class="text-primary font-bold">অপেক্ষমাণ</span>
-                </div>
-                <div class="flex gap-2 items-center">
-                  <input type="number" id="betInput2" value="10" class="w-1/2 p-2 bg-[#1a1e29] rounded-xl text-center text-xs text-white outline-none font-bold"/>
-                  <button id="betBtn2" onclick="handleCustomBet(2)" class="w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow">BET</button>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Realtime Canvas Aviator Component -->
+      <div class="aviator-wrapper">
+        <div class="top-header-game">
+            <div class="game-logo">Aviator Live</div>
+            <div class="game-user-balance"><span id="balance">0.00</span> BDT</div>
         </div>
 
-        <div class="flex flex-col gap-3">
-          <div class="bg-[#12151f] p-3.5 rounded-3xl border border-gray-800 flex flex-col h-64">
-            <div class="border-b border-gray-800 pb-2 text-xs font-bold text-white flex justify-between">
-              <span>💬 গেম লাইভ চ্যাট</span>
-              <span class="text-[10px] text-green-400">● অনলাইন</span>
+        <div class="main-game-container">
+            <div class="left-sidebar">
+                <div class="sidebar-tabs">
+                    <div class="tab active">All Bets</div>
+                    <div class="tab">My Bets</div>
+                </div>
+                <div class="bets-list" id="betsList"></div>
             </div>
-            <div id="chatMessages" class="flex flex-col gap-1.5 overflow-y-auto flex-grow scrollbar-none text-[11px] my-2 text-gray-300">
-              <div class="bg-[#1a1e29] p-1.5 rounded-lg"><b>Admin:</b> সবাই খেলায় স্বাগতম! বড় প্রফিট করুন।</div>
+
+            <div class="game-section">
+                <div class="history-bar" id="historyBar"></div>
+
+                <div class="canvas-area" id="canvasArea">
+                    <canvas id="gameCanvas"></canvas>
+                    <div class="overlay-status">
+                        <div id="statusText" class="multiplier-text">1.00x</div>
+                        <div id="countdownBox" style="display: none;">
+                            <div class="countdown-text">WAIT FOR NEXT ROUND</div>
+                            <div class="countdown-text"><span id="timer">5.0</span>s</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls-area">
+                    <!-- Bet Panel 1 -->
+                    <div class="bet-panel">
+                        <div class="bet-controls-left">
+                            <div class="amount-adjuster">
+                                <button class="btn-stepper" onclick="adjustBet(1, -1)">-</button>
+                                <input type="number" id="bet1" value="10.00" step="1" min="1">
+                                <button class="btn-stepper" onclick="adjustBet(1, 1)">+</button>
+                            </div>
+                            <div class="quick-amounts">
+                                <button class="btn-quick" onclick="setBet(1, 10)">10</button>
+                                <button class="btn-quick" onclick="setBet(1, 50)">50</button>
+                                <button class="btn-quick" onclick="setBet(1, 100)">100</button>
+                                <button class="btn-quick" onclick="setBet(1, 500)">500</button>
+                            </div>
+                        </div>
+                        <button class="btn-bet" id="btn1"><span>Bet</span><span>10.00 BDT</span></button>
+                    </div>
+
+                    <!-- Bet Panel 2 -->
+                    <div class="bet-panel">
+                        <div class="bet-controls-left">
+                            <div class="amount-adjuster">
+                                <button class="btn-stepper" onclick="adjustBet(2, -1)">-</button>
+                                <input type="number" id="bet2" value="10.00" step="1" min="1">
+                                <button class="btn-stepper" onclick="adjustBet(2, 1)">+</button>
+                            </div>
+                            <div class="quick-amounts">
+                                <button class="btn-quick" onclick="setBet(2, 10)">10</button>
+                                <button class="btn-quick" onclick="setBet(2, 50)">50</button>
+                                <button class="btn-quick" onclick="setBet(2, 100)">100</button>
+                                <button class="btn-quick" onclick="setBet(2, 500)">500</button>
+                            </div>
+                        </div>
+                        <button class="btn-bet" id="btn2"><span>Bet</span><span>10.00 BDT</span></button>
+                    </div>
+                </div>
             </div>
-            <div class="flex gap-1.5">
-              <input type="text" id="chatInputBox" placeholder="মেসেজ লিখুন..." class="w-full p-2 bg-[#1a1e29] rounded-xl text-xs text-white outline-none"/>
-              <button onclick="sendChatMessage()" class="px-3 bg-secondary text-surface font-bold rounded-xl text-xs">পাঠান</button>
-            </div>
-          </div>
         </div>
       </div>
     </section>
-      </main>
-      <!-- Bottom Navigation -->
+  </main>
+
+  <!-- Bottom Navigation -->
   <nav id="bottomNav" class="hidden fixed bottom-0 inset-x-0 h-16 bg-surface-container/95 backdrop-blur-md z-40 flex items-center justify-around border-t border-surface-container-high px-2">
     <button onclick="switchTab('lobby')" class="flex flex-col items-center text-gray-400 hover:text-primary">
       <span class="material-symbols-outlined">casino</span>
@@ -416,10 +664,8 @@
       <span class="material-symbols-outlined">account_circle</span>
       <span class="text-[10px] font-bold mt-0.5">প্রোফাইল</span>
     </button>
-  </nav>
-
-  <!-- Client Script -->
-  <script>
+                                  </nav>
+      <script>
     const firebaseConfig = {
       apiKey: "AIzaSyDF1Pbg1I98hzIUrR8ntKjHHTqWgNHKKTo",
       authDomain: "fb77-admin.firebaseapp.com",
@@ -437,32 +683,12 @@
       db = firebase.database();
     } catch(e) { console.error("Firebase Initialization Error:", e); }
 
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    function playBeep(freq, type, duration) {
-      if (!audioCtx) return;
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = type;
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-      gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
-    }
-    function playEngineSound() { playBeep(120, 'sawtooth', 0.1); }
-    function playCashoutSound() { playBeep(880, 'sine', 0.2); }
-    function playCrashSound() { playBeep(80, 'square', 0.4); }
-
     let currentUser = JSON.parse(localStorage.getItem('fb77_user')) || null;
     let isLoggedIn = localStorage.getItem('fb77_logged_in') === 'true';
 
     let selectedPaymentGateway = 'NAGAD';
     let pendingDepositAmount = 0;
     let selectedWithdrawGateway = 'Bkash';
-    let crashHistory = [1.24, 2.50, 1.05, 4.12, 1.80, 15.40, 2.10];
     let currentAdminSlider = 50;
 
     let dynamicGameList = [{ title: 'FB77 Stuntcat Aviator', provider: 'crash', custom: true, image: 'https://spribe.co/assets/images/games/logo/logo-aviator.svg', rtp: '98.0%' }];
@@ -475,7 +701,8 @@
         showAuthOnly();
       }
     };
-        function showAuthOnly() {
+
+    function showAuthOnly() {
       document.getElementById('mainHeader').classList.add('hidden');
       document.getElementById('bottomNav').classList.add('hidden');
       switchTab('auth');
@@ -554,10 +781,10 @@
 
     function downloadAppAPK() {
       alert("📥 FB77 অ্যাপ ডাউনলোড শুরু হচ্ছে...");
-      const blob = new Blob(["FB77 Stuntcat APK File"], { type: 'application/vnd.android.package-archive' });
-      const url = URL.createObjectURL(blob);
+      const downloadUrl = "https://sakibullmia5-dot.github.io/FB77/";
       const a = document.createElement('a');
-      a.href = url;
+      a.href = downloadUrl;
+      a.target = "_blank";
       a.download = "FB77_Stuntcat_Aviator.apk";
       document.body.appendChild(a);
       a.click();
@@ -565,10 +792,9 @@
     }
 
     function shareGameLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => alert("🔗 গেমের লিংক কপি করা হয়েছে!"));
+      navigator.clipboard.writeText("https://sakibullmia5-dot.github.io/FB77/").then(() => alert("🔗 গেমের লিংক কপি করা হয়েছে!"));
     }
-
-    function toggleAuth(mode) {
+            function toggleAuth(mode) {
       if(mode === 'login') {
         document.getElementById('loginForm').classList.remove('hidden');
         document.getElementById('regForm').classList.add('hidden');
@@ -720,7 +946,8 @@
       isLoggedIn = false;
       showAuthOnly();
     }
-        function initAppDashboard() {
+
+    function initAppDashboard() {
       document.getElementById('mainHeader').classList.remove('hidden');
       document.getElementById('bottomNav').classList.remove('hidden');
       updateUI();
@@ -737,7 +964,7 @@
 
       const balStr = (currentUser.balance || 0).toFixed(2);
       document.getElementById('headerBalance').innerText = balStr;
-      document.getElementById('aviatorTopBalance').innerText = balStr;
+      document.getElementById('balance').innerText = balStr; 
       document.getElementById('profileBalance').innerText = balStr;
       document.getElementById('profileUsernameText').innerText = currentUser.name || "User";
       document.getElementById('profilePhoneText').innerText = "মোবাইল: " + currentUser.phone;
@@ -753,7 +980,9 @@
       const target = document.getElementById('tab-' + tabId);
       if(target) target.classList.remove('hidden');
       
-      if(tabId === 'custom-aviator') startAviatorGameLoop(); else stopAviatorGameLoop();
+      if(tabId === 'custom-aviator') {
+        resizeCanvas();
+      }
       if(tabId === 'withdraw') checkWithdrawBindingStatus();
       window.scrollTo(0, 0);
     }
@@ -953,215 +1182,232 @@
       alert("উত্তোলনের রিকোয়েস্ট জমা হয়েছে!");
     }
 
-    let aviatorState = 'waiting';
-    let currentMultiplier = 1.00;
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const statusText = document.getElementById('statusText');
+    const countdownBox = document.getElementById('countdownBox');
+    const timerEl = document.getElementById('timer');
+    const progressBar = document.getElementById('progressBar');
+    const btn1 = document.getElementById('btn1');
+    const btn2 = document.getElementById('btn2');
+    const historyBar = document.getElementById('historyBar');
+    const betsList = document.getElementById('betsList');
+
+    function resizeCanvas() {
+        if (!canvas || !canvas.parentElement) return;
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    const planeImage = new Image();
+    planeImage.src = 'https://spribe.co/assets/images/games/logo/logo-aviator.svg';
+    let isImageLoaded = false;
+    planeImage.onload = () => { isImageLoaded = true; };
+
+    let gameState = 'WAITING';
+    let multiplier = 1.00;
     let crashPoint = 1.00;
-    let loopTimer = null;
-    let countdownTimer = 5.0;
 
-    let bet1 = { active: false, amount: 0, cashedOut: false };
-    let bet2 = { active: false, amount: 0, cashedOut: false };
+    let bet1Amount = 0;
+    let bet2Amount = 0;
+    let isBet1Placed = false;
+    let isBet2Placed = false;
 
-    function handleCustomBet(id) {
-      const inputVal = parseFloat(document.getElementById('betInput' + id).value);
-      const btn = document.getElementById('betBtn' + id);
-      const statusEl = document.getElementById('p' + id + 'Status');
-      const b = (id === 1) ? bet1 : bet2;
+    const fakeUsers = ['a***1', 'd***4', 'm***9', 'k***2', 's***7'];
+    if(betsList) {
+      betsList.innerHTML = '';
+      fakeUsers.forEach(user => {
+          const row = document.createElement('div');
+          row.className = 'bet-row';
+          row.innerHTML = `<span>${user}</span><span>10.00 BDT</span><span class="mult-badge">${(Math.random()*2 + 1.1).toFixed(2)}x</span>`;
+          betsList.appendChild(row);
+      });
+    }
 
-      if (aviatorState === 'waiting') {
-        if (!b.active) {
-          if (currentUser.balance < inputVal || inputVal <= 0) { 
-            alert("পর্যাপ্ত ব্যালেন্স নেই!"); 
-            return; 
-          }
-          const updatedBal = currentUser.balance - inputVal;
-          syncUserBalanceToFirebase(updatedBal);
+    function adjustBet(num, step) {
+        if (gameState !== 'WAITING') return;
+        let input = document.getElementById('bet' + num);
+        let val = parseFloat(input.value) || 10.00;
+        val = Math.max(1, val + step);
+        input.value = val.toFixed(2);
+        updateButtonUI(num === 1 ? btn1 : btn2, num);
+    }
 
-          b.active = true;
-          b.amount = inputVal;
-          b.cashedOut = false;
+    function setBet(num, amount) {
+        if (gameState !== 'WAITING') return;
+        let input = document.getElementById('bet' + num);
+        input.value = amount.toFixed(2);
+        updateButtonUI(num === 1 ? btn1 : btn2, num);
+    }
 
-          statusEl.innerText = "বেট গৃহিত (৳" + inputVal + ")";
-          btn.innerText = "CANCEL";
-          btn.className = "w-1/2 py-2.5 bg-red-600 text-white font-black rounded-xl text-xs shadow";
+    function getRandomCrashPoint() {
+        if(currentAdminSlider >= 95) {
+          return parseFloat((1.00 + Math.random() * 0.05).toFixed(2));
+        }
+        let rand = Math.random();
+        if (rand < 0.05) return 1.00;
+        let crash = (100 / (Math.random() * 99 + 1));
+        let val = parseFloat(Math.min(Math.max(crash, 1.01), 40.00).toFixed(2));
+        return isNaN(val) ? 1.01 : val;
+    }
+
+    function startCountdown() {
+        gameState = 'WAITING';
+        statusText.style.display = 'none';
+        countdownBox.style.display = 'block';
+
+        updateButtonUI(btn1, 1);
+        updateButtonUI(btn2, 2);
+
+        let timeLeft = 5.0;
+        let countdownInterval = setInterval(() => {
+            timeLeft -= 0.1;
+            timerEl.textContent = timeLeft.toFixed(1);
+            progressBar.style.width = ((timeLeft / 5.0) * 100) + '%';
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                countdownBox.style.display = 'none';
+                statusText.style.display = 'block';
+                startFlight();
+            }
+        }, 100);
+    }
+
+    function startFlight() {
+        gameState = 'FLYING';
+        multiplier = 1.00;
+        crashPoint = getRandomCrashPoint();
+        statusText.classList.remove('flew-away');
+
+        updateButtonUI(btn1, 1);
+        updateButtonUI(btn2, 2);
+
+        let startTime = performance.now();
+
+        function animate(timestamp) {
+            let elapsed = (timestamp - startTime) / 1000;
+            multiplier = 1.00 + Math.pow(elapsed, 1.4) * 0.2;
+            if (isNaN(multiplier)) multiplier = 1.00;
+
+            let progress = Math.min(elapsed / 6, 1);
+
+            if (isBet1Placed) updateButtonUI(btn1, 1);
+            if (isBet2Placed) updateButtonUI(btn2, 2);
+
+            if (multiplier >= crashPoint) {
+                gameState = 'CRASHED';
+                statusText.textContent = 'FLEW AWAY!';
+                statusText.classList.add('flew-away');
+                addHistory(crashPoint);
+
+                isBet1Placed = false;
+                isBet2Placed = false;
+
+                updateButtonUI
+                updateButtonUI(btn1, 1);
+                updateButtonUI(btn2, 2);
+
+                setTimeout(startCountdown, 3000);
+                return;
+            }
+
+            statusText.textContent = multiplier.toFixed(2) + 'x';
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.strokeStyle = '#e50914';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height);
+            ctx.lineTo(canvas.width * progress, canvas.height * (1 - progress));
+            ctx.stroke();
+
+            if (isImageLoaded) {
+                ctx.drawImage(planeImage, (canvas.width * progress) - 30, (canvas.height * (1 - progress)) - 20, 60, 40);
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    function addHistory(mult) {
+        const item = document.createElement('div');
+        item.className = 'history-item';
+        if(mult < 2.0) item.style.color = '#38bdf8';
+        else if(mult < 5.0) item.style.color = '#c084fc';
+        else item.style.color = '#f43f5e';
+        item.textContent = mult.toFixed(2) + 'x';
+        historyBar.prepend(item);
+        if (historyBar.children.length > 15) historyBar.lastChild.remove();
+    }
+
+    function updateButtonUI(btn, num) {
+        let amount = parseFloat(document.getElementById('bet' + num).value) || 0;
+        let isPlaced = (num === 1) ? isBet1Placed : isBet2Placed;
+
+        if (gameState === 'WAITING') {
+            btn.className = 'btn-bet';
+            btn.disabled = false;
+            btn.innerHTML = `<span>${isPlaced ? 'Cancel' : 'Bet'}</span><span>${amount.toFixed(2)} BDT</span>`;
+        } else if (gameState === 'FLYING') {
+            if (isPlaced) {
+                btn.className = 'btn-bet btn-cashout';
+                btn.disabled = false;
+                let currentWin = (amount * multiplier).toFixed(2);
+                btn.innerHTML = `<span>CASHOUT</span><span>${currentWin} BDT</span>`;
+            } else {
+                btn.className = 'btn-bet';
+                btn.disabled = true;
+                btn.innerHTML = `<span>Waiting</span><span>Next Round</span>`;
+            }
         } else {
-          const updatedBal = currentUser.balance + b.amount;
-          syncUserBalanceToFirebase(updatedBal);
-
-          b.active = false;
-          b.amount = 0;
-
-          statusEl.innerText = "অপেক্ষমাণ";
-          btn.innerText = "BET";
-          btn.className = "w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow";
+            btn.className = 'btn-bet';
+            btn.disabled = true;
+            btn.innerHTML = `<span>Flew Away</span><span>0.00 BDT</span>`;
         }
-      } 
-      else if (aviatorState === 'flying') {
-        if (b.active && !b.cashedOut) {
-          b.cashedOut = true;
-          const winAmt = b.amount * currentMultiplier;
-          
-          const updatedBal = currentUser.balance + winAmt;
-          syncUserBalanceToFirebase(updatedBal);
-
-          playCashoutSound();
-          statusEl.innerText = "জিতেছেন: ৳" + winAmt.toFixed(2);
-          
-          btn.innerText = "BET";
-          btn.className = "w-1/2 py-2.5 bg-gray-700 text-gray-400 font-black rounded-xl text-xs cursor-not-allowed shadow";
-          btn.disabled = true;
-        }
-      }
     }
 
-    function startAviatorGameLoop() {
-      if (loopTimer) clearInterval(loopTimer);
-      runWaitingPhase();
-    }
-
-    function stopAviatorGameLoop() {
-      if (loopTimer) clearInterval(loopTimer);
-    }
-
-    function renderHistoryBar() {
-      const bar = document.getElementById('multiplierHistoryBar');
-      bar.innerHTML = '<span class="text-[11px] text-gray-400 font-bold px-1">হিস্ট্রি:</span>';
-      crashHistory.slice(-10).reverse().forEach(val => {
-        const span = document.createElement('span');
-        span.className = `px-2 py-0.5 rounded text-[11px] font-bold ${val >= 2.0 ? 'bg-secondary/20 text-secondary border border-secondary/30' : 'bg-gray-800 text-gray-300'}`;
-        span.innerText = val.toFixed(2) + 'x';
-        bar.appendChild(span);
-      });
-    }
-
-    function runWaitingPhase() {
-      aviatorState = 'waiting';
-      countdownTimer = 5.0;
-      currentMultiplier = 1.00;
-      renderHistoryBar();
-
-      [1, 2].forEach(id => {
-        const b = (id === 1) ? bet1 : bet2;
-        b.active = false;
-        b.amount = 0;
-        b.cashedOut = false;
-
-        const btn = document.getElementById('betBtn' + id);
-        btn.disabled = false;
-        btn.innerText = "BET";
-        btn.className = "w-1/2 py-2.5 bg-green-600 text-white font-black rounded-xl text-xs shadow";
-        document.getElementById('p' + id + 'Status').innerText = "অপেক্ষমাণ";
-      });
-
-      document.getElementById('waitingBox').classList.remove('hidden');
-      document.getElementById('flyingBox').classList.add('hidden');
-      document.getElementById('crashedBox').classList.add('hidden');
-      document.getElementById('planeIcon').classList.add('hidden');
-
-      let nextCrashSim = 1.01;
-      if(currentAdminSlider >= 95) {
-        nextCrashSim = (1.00 + Math.random() * 0.05).toFixed(2);
-      } else {
-        const boost = (100 - currentAdminSlider) / 20;
-        nextCrashSim = (1.05 + boost + Math.random() * 3).toFixed(2);
-      }
-
-      loopTimer = setInterval(() => {
-        countdownTimer -= 0.1;
-        document.getElementById('countdownNumber').innerText = countdownTimer.toFixed(1) + "s";
-        if (countdownTimer <= 0) {
-          clearInterval(loopTimer);
-          startFlyingPhase(parseFloat(nextCrashSim));
-        }
-      }, 100);
-    }
-
-    function startFlyingPhase(forcedCrash) {
-      aviatorState = 'flying';
-      currentMultiplier = 1.00;
-      crashPoint = forcedCrash;
-      
-      document.getElementById('waitingBox').classList.add('hidden');
-      document.getElementById('flyingBox').classList.remove('hidden');
-      document.getElementById('planeIcon').classList.remove('hidden');
-
-      [1, 2].forEach(id => {
-        const b = (id === 1) ? bet1 : bet2;
-        const btn = document.getElementById('betBtn' + id);
-        if (b.active) {
-          btn.innerText = "CASH OUT";
-          btn.className = "w-1/2 py-2.5 bg-amber-500 text-black font-black rounded-xl text-xs shadow animate-pulse";
-        } else {
-          btn.disabled = true;
-          btn.className = "w-1/2 py-2.5 bg-gray-800 text-gray-500 font-black rounded-xl text-xs cursor-not-allowed";
-        }
-      });
-
-      let progress = 0;
-      loopTimer = setInterval(() => {
-        currentMultiplier += 0.02 + (currentMultiplier * 0.02);
-        progress = Math.min(85, progress + 0.8);
-        playEngineSound();
+    function handleBetClick(num) {
+        let amountInput = document.getElementById('bet' + num);
+        let amount = parseFloat(amountInput.value);
         
-        let plane = document.getElementById('planeIcon');
-        plane.style.left = progress + '%';
-        plane.style.bottom = (progress * 0.85) + '%';
-
-        [1, 2].forEach(id => {
-          const b = (id === 1) ? bet1 : bet2;
-          const statusEl = document.getElementById('p' + id + 'Status');
-          if(b.active && !b.cashedOut) {
-            statusEl.innerText = "লাভ: ৳" + (b.amount * currentMultiplier).toFixed(2);
-          }
-        });
-
-        if (currentMultiplier >= crashPoint) {
-          currentMultiplier = crashPoint;
-          clearInterval(loopTimer);
-          triggerCrash();
-          return;
+        if (isNaN(amount) || amount <= 0) {
+            alert("সঠিক বাজির পরিমাণ লিখুন!");
+            return;
         }
-        document.getElementById('aviatorMultiplierDisplay').innerText = currentMultiplier.toFixed(2) + "x";
-      }, 70);
-    }
 
-    function triggerCrash() {
-      aviatorState = 'crashed';
-      playCrashSound();
-      crashHistory.push(crashPoint);
-      
-      document.getElementById('flyingBox').classList.add('hidden');
-      document.getElementById('crashedBox').classList.remove('hidden');
-      document.getElementById('finalCrashMultiplier').innerText = crashPoint.toFixed(2) + "x";
-      document.getElementById('planeIcon').classList.add('hidden');
-
-      [1, 2].forEach(id => {
-        const b = (id === 1) ? bet1 : bet2;
-        const statusEl = document.getElementById('p' + id + 'Status');
-        const btn = document.getElementById('betBtn' + id);
-        
-        if (b.active && !b.cashedOut) {
-          statusEl.innerText = "লস্ট (৳" + b.amount + ")";
-          statusEl.className = "text-red-500 font-bold";
+        if (gameState === 'WAITING') {
+            if (num === 1) {
+                isBet1Placed = !isBet1Placed;
+                bet1Amount = isBet1Placed ? amount : 0;
+            } else {
+                isBet2Placed = !isBet2Placed;
+                bet2Amount = isBet2Placed ? amount : 0;
+            }
+            updateButtonUI(num === 1 ? btn1 : btn2, num);
+        } else if (gameState === 'FLYING') {
+            let isPlaced = (num === 1) ? isBet1Placed : isBet2Placed;
+            if (isPlaced) {
+                let winAmt = amount * multiplier;
+                currentUser.balance += winAmt;
+                syncUserBalanceToFirebase(currentUser.balance);
+                alert(`🎉 ক্যাশআউট সফল হয়েছে! আপনি জিতেছে: ৳ ${winAmt.toFixed(2)}`);
+                
+                if (num === 1) isBet1Placed = false;
+                else isBet2Placed = false;
+                updateButtonUI(num === 1 ? btn1 : btn2, num);
+            }
         }
-        btn.disabled = true;
-        btn.innerText = "BET";
-        btn.className = "w-1/2 py-2.5 bg-gray-800 text-gray-500 font-black rounded-xl text-xs cursor-not-allowed";
-      });
-
-      setTimeout(() => { startAviatorGameLoop(); }, 4000);
     }
 
-    function sendChatMessage() {
-      const input = document.getElementById('chatInputBox');
-      const msg = input.value.trim();
-      if(!msg || !currentUser) return;
-      const chatBox = document.getElementById('chatMessages');
-      chatBox.innerHTML += `<div class="bg-[#1a1e29] p-1.5 rounded-lg"><b>${currentUser.name}:</b> ${msg}</div>`;
-      input.value = '';
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
+    btn1.onclick = () => handleBetClick(1);
+    btn2.onclick = () => handleBetClick(2);
+
+    startCountdown();
   </script>
 </body>
 </html>
-  
