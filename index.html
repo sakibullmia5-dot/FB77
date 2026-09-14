@@ -255,8 +255,7 @@
         font-weight: bold;
         cursor: pointer;
         transition: 0.2s;
-    }
-    .btn-quick:hover { background: #252836; color: #fff; }
+    }    .btn-quick:hover { background: #252836; color: #fff; }
     .btn-bet {
         width: 120px;
         height: 75px;
@@ -295,7 +294,7 @@
     }
   </style>
 </head>
-  <body class="bg-surface text-gray-200 font-sans min-h-screen flex flex-col">
+<body class="bg-surface text-gray-200 font-sans min-h-screen flex flex-col">
 
   <!-- Maintenance Overlay -->
   <div id="maintenanceOverlay" class="fixed inset-0 bg-surface z-50 flex flex-col items-center justify-center p-6 text-center hidden">
@@ -331,7 +330,7 @@
       </div>
     </div>
   </header>
-      <main class="flex-grow pt-8 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
+  <main class="flex-grow pt-8 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
     <!-- Auth Section -->
     <section id="tab-auth" class="view-section min-h-[80vh] flex flex-col items-center justify-center">
       <div class="w-full max-w-md bg-surface-container p-6 rounded-3xl border border-surface-container-high shadow-2xl">
@@ -376,8 +375,7 @@
         <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
           <div class="flex items-center gap-3">
             <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-secondary p-0.5 flex-shrink-0">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-full h-full object-cover rounded-full"/>
-            </div>
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-full h-full object-cover rounded-full"/> </div>
             <div>
               <div class="inline-block bg-gray-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">VIP1</div>
               <div class="text-sm font-black text-white" id="profileUsernameText">-</div>
@@ -416,8 +414,8 @@
           <button onclick="logoutUser()" class="w-full py-2.5 bg-red-500/20 text-red-400 font-bold rounded-xl text-xs border border-red-500/30">লগআউট করুন</button>
         </div>
       </div>
-  </section>
-                  <!-- Lobby Section -->
+    </section>
+    <!-- Lobby Section -->
     <section id="tab-lobby" class="view-section hidden flex flex-col gap-6 pt-16">
       <div id="dynamicBanner" class="w-full h-32 md:h-48 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-surface-container-high overflow-hidden relative flex items-center p-6">
         <div>
@@ -462,9 +460,7 @@
               <span class="text-[9px] text-gray-400">ROCKET</span>
             </button>
           </div>
-        </div>
-
-        <div class="bg-amber-950/20 p-3 rounded-xl border border-amber-500/30 text-[11px] text-amber-300 leading-relaxed">
+        </div> <div class="bg-amber-950/20 p-3 rounded-xl border border-amber-500/30 text-[11px] text-amber-300 leading-relaxed">
           <span class="font-bold text-amber-400">⚠️ গুরুত্বপূর্ণ নির্দেশনা:</span> আপনি <span id="noticeMethodName" class="font-bold">NAGAD</span> নির্বাচন করেছেন। অনুগ্রহ করে শুধুমাত্র উক্ত অ্যাকাউন্ট থেকে পেমেন্ট করুন।
         </div>
 
@@ -482,7 +478,8 @@
         <button onclick="proceedToTrxIdPage()" class="w-full py-3.5 bg-red-600 text-white font-black rounded-xl text-sm shadow-lg">পরবর্তী</button>
       </div>
     </section>
-            <!-- Deposit Trx Section -->
+
+    <!-- Deposit Trx Section -->
     <section id="tab-deposit-trx" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full pt-16">
       <div class="bg-[#0e1621] p-5 rounded-3xl border border-gray-800 shadow-xl flex flex-col gap-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-3">
@@ -537,9 +534,8 @@
           <button id="btnWeeklyBonus" onclick="claimWeeklyBonus()" class="px-4 py-2 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow">দাবি</button>
         </div>
       </div>
-    </section>
-
-    <!-- Withdraw Section -->
+              </section>
+               <!-- Withdraw Section -->
     <section id="tab-withdraw" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full pt-16">
       <div class="bg-surface-container p-5 rounded-3xl border border-surface-container-high shadow-xl flex flex-col gap-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-3">
@@ -569,7 +565,7 @@
         </div>
       </div>
     </section>
-            <!-- Integrated Realtime Canvas Aviator Game Section -->
+    <!-- Integrated Realtime Canvas Aviator Game Section -->
     <section id="tab-custom-aviator" class="view-section hidden flex flex-col gap-4 max-w-6xl mx-auto w-full pt-16">
       <div class="flex justify-between items-center bg-surface-container p-3 rounded-2xl border border-surface-container-high mb-2">
         <button onclick="switchTab('lobby')" class="bg-surface-container-low px-3 py-1.5 rounded-xl text-xs text-gray-300 border border-gray-700">← লবিতে ফিরুন</button>
@@ -610,8 +606,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="controls-area">
+                            <div class="controls-area">
                     <!-- Bet Panel 1 -->
                     <div class="bet-panel">
                         <div class="bet-controls-left">
@@ -664,8 +659,8 @@
       <span class="material-symbols-outlined">account_circle</span>
       <span class="text-[10px] font-bold mt-0.5">প্রোফাইল</span>
     </button>
-                                  </nav>
-      <script>
+  </nav>
+  <script>
     const firebaseConfig = {
       apiKey: "AIzaSyDF1Pbg1I98hzIUrR8ntKjHHTqWgNHKKTo",
       authDomain: "fb77-admin.firebaseapp.com",
@@ -746,8 +741,7 @@
               document.getElementById('blockedOverlay').classList.add('hidden');
             }
           });
-
-          db.ref('users/' + cleanPhone + '/balance').on('value', (snapshot) => {
+           db.ref('users/' + cleanPhone + '/balance').on('value', (snapshot) => {
             if(snapshot.exists()) {
               currentUser.balance = parseFloat(snapshot.val());
               localStorage.setItem('fb77_user', JSON.stringify(currentUser));
@@ -794,7 +788,8 @@
     function shareGameLink() {
       navigator.clipboard.writeText("https://sakibullmia5-dot.github.io/FB77/").then(() => alert("🔗 গেমের লিংক কপি করা হয়েছে!"));
     }
-            function toggleAuth(mode) {
+
+    function toggleAuth(mode) {
       if(mode === 'login') {
         document.getElementById('loginForm').classList.remove('hidden');
         document.getElementById('regForm').classList.add('hidden');
@@ -916,7 +911,6 @@
         alert("লগইন করতে সমস্যা হয়েছে। ডাটাবেস রুলস চেক করুন।");
       });
     }
-
     function handleForgotPassword() {
       const rawPhone = prompt("আপনার রেজিস্টার্ড মোবাইল নম্বরটি লিখুন:");
       if(!rawPhone) return;
@@ -931,8 +925,7 @@
         if(snap.exists()) {
           const pass = snap.val().pass;
           alert("🔑 আপনার পাসওয়ার্ড হলো: " + pass);
-        } else {
-          alert("এই নম্বরে কোনো অ্যাকাউন্ট খুঁজে পাওয়া যায়নি!");
+        } else {alert("এই নম্বরে কোনো অ্যাকাউন্ট খুঁজে পাওয়া যায়নি!");
         }
       }).catch(err => {
         alert("ত্রুটি: " + err.message);
@@ -1023,7 +1016,7 @@
       const customVal = parseFloat(document.getElementById('depositInputAmount').value);
       if(!customVal || customVal < 100) { alert("সর্বনিম্ন ১০০ টাকা জমা করুন!"); return; }
       pendingDepositAmount = customVal;
-      document.getElementById('trxDisplayAmt').innerText = "BDT " + pendingDepositAmount;
+     document.getElementById('trxDisplayAmt').innerText = "BDT " + pendingDepositAmount;
 
       if(db) {
         let field = 'agent_nagad';
@@ -1142,8 +1135,7 @@
           withdrawNum: num,
           withdrawPin: pin
         });
-      }
-      checkWithdrawBindingStatus();
+    }checkWithdrawBindingStatus();
       alert("উত্তোলনের নম্বর সেভ হয়েছে!");
     }
 
@@ -1181,7 +1173,6 @@
 
       alert("উত্তোলনের রিকোয়েস্ট জমা হয়েছে!");
     }
-
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const statusText = document.getElementById('statusText');
@@ -1305,7 +1296,6 @@
                 isBet1Placed = false;
                 isBet2Placed = false;
 
-                updateButtonUI
                 updateButtonUI(btn1, 1);
                 updateButtonUI(btn2, 2);
 
@@ -1314,98 +1304,185 @@
             }
 
             statusText.textContent = multiplier.toFixed(2) + 'x';
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.strokeStyle = '#e50914';
-            ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.moveTo(0, canvas.height);
-            ctx.lineTo(canvas.width * progress, canvas.height * (1 - progress));
-            ctx.stroke();
+            drawScene(progress, elapsed);
 
-            if (isImageLoaded) {
-                ctx.drawImage(planeImage, (canvas.width * progress) - 30, (canvas.height * (1 - progress)) - 20, 60, 40);
+            if (gameState === 'FLYING') {
+                requestAnimationFrame(animate);
             }
-
-            requestAnimationFrame(animate);
         }
 
         requestAnimationFrame(animate);
     }
 
-    function addHistory(mult) {
-        const item = document.createElement('div');
-        item.className = 'history-item';
-        if(mult < 2.0) item.style.color = '#38bdf8';
-        else if(mult < 5.0) item.style.color = '#c084fc';
-        else item.style.color = '#f43f5e';
-        item.textContent = mult.toFixed(2) + 'x';
-        historyBar.prepend(item);
-        if (historyBar.children.length > 15) historyBar.lastChild.remove();
-    }
+    function drawScene(p, elapsedTime) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    function updateButtonUI(btn, num) {
-        let amount = parseFloat(document.getElementById('bet' + num).value) || 0;
-        let isPlaced = (num === 1) ? isBet1Placed : isBet2Placed;
+        let bgLightColor = '#0d233a'; 
+        if (multiplier >= 10.00) {
+            bgLightColor = '#4a0d34'; 
+        } else if (multiplier >= 2.00) {
+            bgLightColor = '#2a0d3a'; 
+    }let bgGradient = ctx.createRadialGradient(
+            0, canvas.height, 0,
+            0, canvas.height, canvas.width * 0.9
+        );
+        bgGradient.addColorStop(0, bgLightColor);
+        bgGradient.addColorStop(1, '#000000');
+        ctx.fillStyle = bgGradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        if (gameState === 'WAITING') {
-            btn.className = 'btn-bet';
-            btn.disabled = false;
-            btn.innerHTML = `<span>${isPlaced ? 'Cancel' : 'Bet'}</span><span>${amount.toFixed(2)} BDT</span>`;
-        } else if (gameState === 'FLYING') {
-            if (isPlaced) {
-                btn.className = 'btn-bet btn-cashout';
-                btn.disabled = false;
-                let currentWin = (amount * multiplier).toFixed(2);
-                btn.innerHTML = `<span>CASHOUT</span><span>${currentWin} BDT</span>`;
-            } else {
-                btn.className = 'btn-bet';
-                btn.disabled = true;
-                btn.innerHTML = `<span>Waiting</span><span>Next Round</span>`;
-            }
-        } else {
-            btn.className = 'btn-bet';
-            btn.disabled = true;
-            btn.innerHTML = `<span>Flew Away</span><span>0.00 BDT</span>`;
-        }
-    }
+        const startX = 0;
+        const startY = canvas.height;
+        const endX = startX + (canvas.width - 90) * p;
+        const endY = startY - (canvas.height - 90) * Math.pow(p, 1.4);
 
-    function handleBetClick(num) {
-        let amountInput = document.getElementById('bet' + num);
-        let amount = parseFloat(amountInput.value);
+        const carpetColor = '#e50914';
+        const carpetFill = 'rgba(229, 9, 20, 0.4)';
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.quadraticCurveTo(startX + (endX - startX) / 2, startY, endX, endY);
+        ctx.strokeStyle = carpetColor;
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        ctx.lineTo(endX, startY);
+        ctx.lineTo(startX, startY);
+        ctx.fillStyle = carpetFill;
+        ctx.fill();
+
+        ctx.save();
         
-        if (isNaN(amount) || amount <= 0) {
-            alert("সঠিক বাজির পরিমাণ লিখুন!");
-            return;
+        let floatY = (gameState === 'FLYING') ? Math.sin(elapsedTime * 14) * 2.5 : 0;
+        ctx.translate(endX, endY + floatY);
+        ctx.shadowColor = carpetColor;
+        ctx.shadowBlur = 15;
+
+        if (isImageLoaded) {
+            const cropX = 0;
+            const cropY = 0;
+            const cropWidth = planeImage.width;
+            const cropHeight = planeImage.height * 0.58;
+
+            const renderWidth = 85;
+            const renderHeight = 45;
+
+            ctx.drawImage(
+                planeImage,
+                cropX, cropY, cropWidth, cropHeight,
+                -renderWidth / 2, -renderHeight / 2, renderWidth, renderHeight
+            );
+        } else {
+            ctx.fillStyle = carpetColor;
+            ctx.fillRect(-20, -10, 40, 20);
         }
+        ctx.restore();
+    }
+
+    function addHistory(val) {
+        const item = document.createElement('span');
+        item.className = 'history-item';
+        if (val >= 10.00) {
+            item.style.color = '#c77dff';
+        } else if (val >= 2.00) {
+            item.style.color = '#9b51e0';
+        } else {
+            item.style.color = '#3498db';
+        }
+        item.textContent = val.toFixed(2) + 'x';
+        historyBar.prepend(item);
+    }
+
+    function handleBetAction(btn, num) {
+        let betInput = document.getElementById('bet' + num);
+        let amount = parseFloat(betInput.value);
+        if (isNaN(amount) || amount <= 0) amount = 10.00;
 
         if (gameState === 'WAITING') {
             if (num === 1) {
-                isBet1Placed = !isBet1Placed;
-                bet1Amount = isBet1Placed ? amount : 0;
-            } else {
-                isBet2Placed = !isBet2Placed;
-                bet2Amount = isBet2Placed ? amount : 0;
+                if (!isBet1Placed) {
+                    if (currentUser.balance >= amount) {
+                        syncUserBalanceToFirebase(currentUser.balance - amount);
+                        bet1Amount = amount;
+                        isBet1Placed = true;
+                    } else {
+                        alert('পর্যাপ্ত ব্যালেন্স নেই!');
+                    }
+                } else {
+                    syncUserBalanceToFirebase(currentUser.balance + bet1Amount);
+                    isBet1Placed = false;
+                }
+            } else if (num === 2) {
+                if (!isBet2Placed) {
+                    if (currentUser.balance >= amount) {
+                        syncUserBalanceToFirebase(currentUser.balance - amount);
+                        bet2Amount = amount;
+                        isBet2Placed = true;
+                    } else {
+                        alert('পর্যাপ্ত ব্যালেন্স নেই!');
+                    }
+                } else {
+                    syncUserBalanceToFirebase(currentUser.balance + bet2Amount);
+                    isBet2Placed = false;
+                }
             }
-            updateButtonUI(num === 1 ? btn1 : btn2, num);
-        } else if (gameState === 'FLYING') {
-            let isPlaced = (num === 1) ? isBet1Placed : isBet2Placed;
-            if (isPlaced) {
-                let winAmt = amount * multiplier;
-                currentUser.balance += winAmt;
-                syncUserBalanceToFirebase(currentUser.balance);
-                alert(`🎉 ক্যাশআউট সফল হয়েছে! আপনি জিতেছে: ৳ ${winAmt.toFixed(2)}`);
-                
-                if (num === 1) isBet1Placed = false;
-                else isBet2Placed = false;
-                updateButtonUI(num === 1 ? btn1 : btn2, num);
+            updateButtonUI(btn, num);
+        } 
+        else if (gameState === 'FLYING') {
+            if (num === 1 && isBet1Placed) {
+                let winAmount = bet1Amount * multiplier;
+                syncUserBalanceToFirebase(currentUser.balance + winAmount);
+                isBet1Placed = false;
+            } else if (num === 2 && isBet2Placed) {
+                let winAmount = bet2Amount * multiplier;
+                syncUserBalanceToFirebase(currentUser.balance + winAmount);
+                isBet2Placed = false;
             }
+            updateButtonUI(btn, num);
         }
     }
 
-    btn1.onclick = () => handleBetClick(1);
-    btn2.onclick = () => handleBetClick(2);
+    function updateButtonUI(btn, num) {
+        let isPlaced = (num === 1) ? isBet1Placed : isBet2Placed;
+        let betInput = document.getElementById('bet' + num);
+        let amount = parseFloat(betInput.value);
+        if (isNaN(amount) || amount <= 0) amount = 10.00;
+
+        if (gameState === 'WAITING') {
+            btn.disabled = false;
+            if (isPlaced) {
+                btn.innerHTML = `<span>CANCEL</span>`;
+                btn.className = 'btn-bet btn-waiting';
+            } else {
+                btn.innerHTML = `<span>Bet</span><span>${amount.toFixed(2)} BDT</span>`;
+                btn.className = 'btn-bet';
+            }
+        } 
+        else if (gameState === 'FLYING') {
+            if (isPlaced) {
+                btn.disabled = false;
+                let currentBet = (num === 1) ? bet1Amount : bet2Amount;
+                let liveWin = (currentBet * multiplier).toFixed(2);
+                btn.innerHTML = `<span>Cash Out</span><span>${liveWin} BDT</span>`;
+                btn.className = 'btn-bet btn-cashout';
+            } else {
+                btn.disabled = true;
+                btn.innerHTML = `<span>Bet</span><span>${amount.toFixed(2)} BDT</span>`;
+                btn.className = 'btn-bet';
+            }
+        } 
+        else if (gameState === 'CRASHED') {
+            btn.disabled = true;
+            btn.innerHTML = `<span>Bet</span><span>${amount.toFixed(2)} BDT</span>`;
+            btn.className = 'btn-bet';
+        }
+    }
+
+    btn1.addEventListener('click', () => handleBetAction(btn1, 1));
+    btn2.addEventListener('click', () => handleBetAction(btn2, 2));
+
+    document.getElementById('bet1').addEventListener('input', () => { if(gameState==='WAITING') updateButtonUI(btn1, 1); });
+    document.getElementById('bet2').addEventListener('input', () => { if(gameState==='WAITING') updateButtonUI(btn2, 2); });
 
     startCountdown();
   </script>
