@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>FB77 - Real Aviator Platform</title>
+  <title>FB77 - Real Platform & WinGo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   
@@ -27,7 +27,7 @@
         }
       }
     }
-  </script>
+        </script>
     <style>
     ::-webkit-scrollbar { width: 4px; height: 4px; }
     ::-webkit-scrollbar-track { background: #0b0f19; }
@@ -49,254 +49,24 @@
         align-items: center;
         border-bottom: 1px solid #202330;
     }
-    .game-logo {
-        font-size: 1.5rem;
-        font-weight: 900;
-        font-style: italic;
-        color: #e50914;
-    }
-    .game-user-balance {
-        background: #000;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: 0.95rem;
-        color: #28a745;
-        font-weight: bold;
-        border: 1px solid #28a745;
-    }
-    .main-game-container {
-        display: flex;
-        flex-direction: row;
-        min-height: 480px;
-    }
-    .left-sidebar {
-        width: 250px;
-        background: #0f1015;
-        border-right: 1px solid #202330;
-        display: flex;
-        flex-direction: column;
-    }
-    .sidebar-tabs {
-        display: flex;
-        background: #14161d;
-    }
-    .tab {
-        flex: 1;
-        padding: 10px;
-        text-align: center;
-        font-size: 0.8rem;
-        color: #888;
-        border-bottom: 2px solid transparent;
-        cursor: pointer;
-    }
-    .tab.active {
-        color: #fff;
-        border-bottom: 2px solid #e50914;
-        background: #0f1015;
-    }
-    .bets-list {
-        flex: 1;
-        overflow-y: auto;
-        max-height: 420px;
-    }
-    .bet-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 12px;
-        font-size: 0.8rem;
-        border-bottom: 1px solid #1a1c26;
-    }
-    .mult-badge {
-        background: rgba(40, 167, 69, 0.2);
-        color: #28a745;
-        padding: 2px 6px;
-        border-radius: 10px;
-        font-weight: bold;
-    }
-    .game-section {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        padding: 12px;
-        gap: 12px;
-    }
-    .history-bar {
-        display: flex;
-        gap: 6px;
-        overflow-x: auto;
-    }
-    .history-item {
-        background: #202330;
-        padding: 3px 10px;
-        border-radius: 12px;
-        font-size: 0.75rem;
-        font-weight: bold;
-        white-space: nowrap;
-    }
-    .canvas-area {
-        position: relative;
-        width: 100%;
-        height: 320px;
-        background: #000;
-        border-radius: 10px;
-        overflow: hidden;
-        border: 1px solid #2a1219;
-    }
-    canvas#gameCanvas {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-    .overlay-status {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        pointer-events: none;
-    }
-    .multiplier-text {
-        font-size: 3.8rem;
-        font-weight: 900;
-        color: #ffffff;
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-    }
-    .countdown-text {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #ffcc00;
-    }
-    .progress-bar-container {
-        width: 200px;
-        height: 6px;
-        background: #333;
-        border-radius: 3px;
-        margin: 10px auto 0;
-        overflow: hidden;
-    }
-    .progress-bar {
-        width: 100%;
-        height: 100%;
-        background: #e50914;
-        transition: width 0.1s linear;
-    }
-    .flew-away {
-        color: #e50914 !important;
-    }
-    .controls-area {
-        display: flex;
-        gap: 12px;
-    }
-    .bet-panel {
-        flex: 1;
-        background: #1c1f2b;
-        padding: 12px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border: 1px solid #2a2e3f;
-        gap: 10px;
-    }
-    .bet-controls-left {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        flex: 1;
-    }
-    .amount-adjuster {
-        display: flex;
-        align-items: center;
-        background: #0f1015;
-        border-radius: 20px;
-        padding: 2px 8px;
-        border: 1px solid #32374a;
-        justify-content: space-between;
-    }
-    .btn-stepper {
-        background: #252836;
-        color: #aaa;
-        border: none;
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.2s;
-    }
-    .btn-stepper:hover { background: #3a3e54; color: #fff; }
-    .amount-adjuster input {
-        width: 70px;
-        background: transparent;
-        border: none;
-        color: #fff;
-        text-align: center;
-        font-size: 1rem;
-        font-weight: bold;
-        outline: none;
-    }
-    .quick-amounts {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6px;
-    }
-    .btn-quick {
-        background: #14161d;
-        border: 1px solid #2a2e3f;
-        color: #888;
-        border-radius: 12px;
-        padding: 4px;
-        font-size: 0.75rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    .btn-quick:hover { background: #252836; color: #fff; }
-    .btn-bet {
-        width: 120px;
-        height: 75px;
-        background: #28a745;
-        color: #fff;
-        border: none;
-        border-radius: 12px;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
-        transition: all 0.2s;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        line-height: 1.2;
-    }
-    .btn-bet:disabled {
-        background: #444 !important;
-        box-shadow: none !important;
-        cursor: not-allowed;
-        opacity: 0.6;
-    }
-    .btn-cashout {
-        background: #d37c00 !important;
-        box-shadow: 0 4px 12px rgba(211, 124, 0, 0.4) !important;
-    }
-    .btn-waiting {
-        background: #d9534f !important;
-    }
-    @media (max-width: 768px) {
-        .main-game-container { flex-direction: column-reverse; }
-        .left-sidebar { width: 100%; height: 160px; }
-        .controls-area { flex-direction: column; }
-        .canvas-area { height: 260px; }
-    }
+    .game-logo { font-size: 1.5rem; font-weight: 900; font-style: italic; color: #e50914; }
+    .game-user-balance { background: #000; padding: 6px 16px; border-radius: 20px; font-size: 0.95rem; color: #28a745; font-weight: bold; border: 1px solid #28a745; }
+    .main-game-container { display: flex; flex-direction: row; min-height: 480px; }
+    .left-sidebar { width: 250px; background: #0f1015; border-right: 1px solid #202330; display: flex; flex-direction: column; }
+    .sidebar-tabs { display: flex; background: #14161d; }
+    .tab { flex: 1; padding: 10px; text-align: center; font-size: 0.8rem; color: #888; border-bottom: 2px solid transparent; cursor: pointer; }
+    .tab.active { color: #fff; border-bottom: 2px solid #e50914; background: #0f1015; }
+    .bets-list { flex: 1; overflow-y: auto; max-height: 420px; }
+    .bet-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; font-size: 0.8rem; border-bottom: 1px solid #1a1c26; }
+    .mult-badge { background: rgba(40, 167, 69, 0.2); color: #28a745; padding: 2px 6px; border-radius: 10px; font-weight: bold; }
+    .game-section { flex: 1; display: flex; flex-direction: column; padding: 12px; gap: 12px; }
+    .history-bar { display: flex; gap: 6px; overflow-x: auto; }
+    .history-item { background: #202330; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; white-space: nowrap; }
+    .canvas-area { position: relative; flex: 1; background: #000; border-radius: 10px; overflow: hidden; min-height: 300px; border: 1px solid #2a1219; }
+    canvas#gameCanvas { width: 100%; height: 100%; display: block; }
   </style>
 </head>
-<body class="bg-surface text-gray-200 font-sans min-h-screen flex flex-col">
+  <body class="bg-surface text-gray-200 font-sans min-h-screen flex flex-col">
 
   <!-- Maintenance Overlay -->
   <div id="maintenanceOverlay" class="fixed inset-0 bg-surface z-50 flex flex-col items-center justify-center p-6 text-center hidden">
@@ -315,8 +85,7 @@
     <h2 class="text-2xl font-black text-white mb-2">অ্যাাকাউন্ট ব্লকড!</h2>
     <p class="text-sm text-gray-400 max-w-md">আপনাকে এডমিন কর্তৃক ব্লক করা হয়েছে। আপনি গেমটি অ্যাক্সেস করতে পারবেন না।</p>
   </div>
-
-  <!-- Main Header -->
+      <!-- Main Header -->
   <header id="mainHeader" class="hidden fixed top-0 inset-x-0 h-16 bg-surface-container/95 backdrop-blur-md z-40 flex items-center justify-between px-4 md:px-8 border-b border-surface-container-high">
     <div class="flex items-center gap-3">
       <span class="text-xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">FB77</span>
@@ -332,7 +101,7 @@
       </div>
     </div>
   </header>
-
+  
   <main class="flex-grow pt-8 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
     <!-- Auth Section -->
     <section id="tab-auth" class="view-section min-h-[80vh] flex flex-col items-center justify-center">
@@ -346,18 +115,18 @@
         </div>
 
         <div class="flex justify-center gap-4 mb-6 border-b border-gray-800 pb-3">
-          <button onclick="toggleAuth('login')" id="btnLoginTab" class="text-sm font-bold text-primary pb-1 border-b-2 border-primary">লগইন</button>
-          <button onclick="toggleAuth('register')" id="btnRegTab" class="text-sm font-bold text-gray-400 pb-1">রেজিস্ট্রেশন</button>
+          <button type="button" onclick="toggleAuth('login')" id="btnLoginTab" class="text-sm font-bold text-primary pb-1 border-b-2 border-primary">লগইন</button>
+          <button type="button" onclick="toggleAuth('register')" id="btnRegTab" class="text-sm font-bold text-gray-400 pb-1">রেজিস্ট্রেশন</button>
         </div>
 
         <!-- Login Form -->
         <div id="loginForm" class="flex flex-col gap-3.5">
           <input type="text" id="logUser" placeholder="মোবাইল নম্বর" class="w-full p-3.5 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
           <input type="password" id="logPass" placeholder="পাসওয়ার্ড" class="w-full p-3.5 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-primary"/>
-          <button id="btnLoginSubmit" onclick="handleLogin()" class="w-full py-3.5 bg-primary text-surface font-black rounded-xl text-sm shadow-lg mt-2 flex items-center justify-center">
+          <button type="button" id="btnLoginSubmit" onclick="handleLogin()" class="w-full py-3.5 bg-primary text-surface font-black rounded-xl text-sm shadow-lg mt-2 flex items-center justify-center">
             <span>লগইন করুন</span>
           </button>
-          <button onclick="handleForgotPassword()" class="text-xs text-gray-400 hover:text-primary text-right mt-1">পাসওয়ার্ড ভুলে গেছেন?</button>
+          <button type="button" onclick="handleForgotPassword()" class="text-xs text-gray-400 hover:text-primary text-right mt-1">পাসওয়ার্ড ভুলে গেছেন?</button>
         </div>
 
         <!-- Registration Form -->
@@ -365,7 +134,7 @@
           <input type="text" id="regName" placeholder="ইউজারনেম" class="w-full p-3.5 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
           <input type="text" id="regPhone" placeholder="মোবাইল নম্বর" class="w-full p-3.5 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
           <input type="password" id="regPass" placeholder="পাসওয়ার্ড দিন" class="w-full p-3.5 rounded-xl bg-surface-container-low border border-gray-700 text-sm text-white outline-none focus:border-secondary"/>
-          <button id="btnRegSubmit" onclick="handleRegister()" class="w-full py-3.5 bg-secondary text-surface font-black rounded-xl text-sm shadow-lg mt-2 flex items-center justify-center">
+          <button type="button" id="btnRegSubmit" onclick="handleRegister()" class="w-full py-3.5 bg-secondary text-surface font-black rounded-xl text-sm shadow-lg mt-2 flex items-center justify-center">
             <span>রেজিস্ট্রেশন সম্পন্ন করুন</span>
           </button>
         </div>
@@ -423,14 +192,14 @@
     <section id="tab-lobby" class="view-section hidden flex flex-col gap-6 pt-16">
       <div id="dynamicBanner" class="w-full h-32 md:h-48 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 border border-surface-container-high overflow-hidden relative flex items-center p-6">
         <div>
-          <h2 id="bannerTitle" class="text-xl md:text-2xl font-black text-white">FB77 রিয়েল এভিয়েটর গেম</h2>
+          <h2 id="bannerTitle" class="text-xl md:text-2xl font-black text-white">FB77 রিয়েল গেমিং প্ল্যাটফর্ম</h2>
           <p id="bannerSub" class="text-xs text-gray-300 mt-1">সর্বোচ্চ উইনিং রেট এবং ইন্সট্যান্ট ক্যাশআউট সুবিধা</p>
         </div>
       </div>
       <div class="flex justify-between items-center bg-surface-container p-4 rounded-2xl border border-surface-container-high">
         <div>
           <h1 class="text-lg font-bold text-white">গেম লবি (FB77 Live)</h1>
-          <p class="text-xs text-gray-400">অরজিনাল রেড এভিয়েটার প্ল্যাটফর্ম</p>
+          <p class="text-xs text-gray-400">আপনার প্রিয় গেমটি বেছে নিন</p>
         </div>
         <button onclick="shareGameLink()" class="bg-surface-container-low border border-gray-700 px-3 py-2 rounded-xl text-xs text-primary font-bold flex items-center gap-1.5">
           <span class="material-symbols-outlined text-sm">share</span> লিংক শেয়ার
@@ -521,8 +290,7 @@
         <div id="depositRecordsList" class="flex flex-col gap-3"></div>
       </div>
     </section>
-
-    <!-- Bonus Claim Center -->
+        <!-- Bonus Claim Center -->
     <section id="tab-bonus-center" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full pt-16">
       <div class="bg-[#0e1621] p-5 rounded-3xl border border-gray-800 shadow-xl flex flex-col gap-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-3">
@@ -576,11 +344,10 @@
       <div class="flex justify-between items-center bg-surface-container p-3 rounded-2xl border border-surface-container-high mb-2">
         <button onclick="switchTab('lobby')" class="bg-surface-container-low px-3 py-1.5 rounded-xl text-xs text-gray-300 border border-gray-700">← লবিতে ফিরুন</button>
         <div class="flex items-center gap-2">
-          <span class="text-xs font-bold text-red-500">✈️ FB77 Live Realtime Aviator</span>
+          <span class="text-xs font-bold text-red-500">✈️ FB77 Live Canvas Aviator</span>
         </div>
       </div>
 
-      <!-- Realtime Canvas Aviator Component -->
       <div class="aviator-wrapper">
         <div class="top-header-game">
             <div class="game-logo">Aviator Live</div>
@@ -614,7 +381,6 @@
                 </div>
 
                 <div class="controls-area">
-                    <!-- Bet Panel 1 -->
                     <div class="bet-panel">
                         <div class="bet-controls-left">
                             <div class="amount-adjuster">
@@ -623,16 +389,15 @@
                                 <button class="btn-stepper" onclick="adjustBet(1, 1)">+</button>
                             </div>
                             <div class="quick-amounts">
+                                <button class="btn-quick" onclick="setBet(1, 10)">10</button>
+                                <button class="btn-quick" onclick="setBet(1, 50)">50</button>
                                 <button class="btn-quick" onclick="setBet(1, 100)">100</button>
-                                <button class="btn-quick" onclick="setBet(1, 200)">200</button>
                                 <button class="btn-quick" onclick="setBet(1, 500)">500</button>
-                                <button class="btn-quick" onclick="setBet(1, 10000)">10,000</button>
                             </div>
                         </div>
                         <button class="btn-bet" id="btn1"><span>Bet</span><span>10.00 BDT</span></button>
                     </div>
 
-                    <!-- Bet Panel 2 -->
                     <div class="bet-panel">
                         <div class="bet-controls-left">
                             <div class="amount-adjuster">
@@ -641,10 +406,10 @@
                                 <button class="btn-stepper" onclick="adjustBet(2, 1)">+</button>
                             </div>
                             <div class="quick-amounts">
+                                <button class="btn-quick" onclick="setBet(2, 10)">10</button>
+                                <button class="btn-quick" onclick="setBet(2, 50)">50</button>
                                 <button class="btn-quick" onclick="setBet(2, 100)">100</button>
-                                <button class="btn-quick" onclick="setBet(2, 200)">200</button>
                                 <button class="btn-quick" onclick="setBet(2, 500)">500</button>
-                                <button class="btn-quick" onclick="setBet(2, 10000)">10,000</button>
                             </div>
                         </div>
                         <button class="btn-bet" id="btn2"><span>Bet</span><span>10.00 BDT</span></button>
@@ -654,7 +419,118 @@
         </div>
       </div>
     </section>
+        <!-- Modern & Fully Integrated WinGo 30s Game Section -->
+    <section id="tab-wingo" class="view-section hidden flex flex-col gap-4 max-w-md mx-auto w-full pt-16">
+      <div class="flex justify-between items-center bg-surface-container p-3 rounded-2xl border border-surface-container-high mb-1">
+        <button onclick="switchTab('lobby')" class="bg-surface-container-low px-3 py-1.5 rounded-xl text-xs text-gray-300 border border-gray-700">← লবিতে ফিরুন</button>
+        <span class="text-xs font-bold text-emerald-400">🎲 WinGo 30s Live</span>
+      </div>
+
+      <div class="wingo-app-wrapper">
+        <!-- Wallet Card -->
+        <div class="wallet-card-wingo">
+            <div style="font-size: 12px; color: #8f9bba;">Total Balance</div>
+            <div class="wallet-balance-wingo">৳ <span id="wingoBalanceDisplay">0.00</span></div>
+        </div>
+
+        <!-- Mode Selector Tabs -->
+        <div class="flex bg-[#222738] rounded-xl p-1 gap-1 mb-3">
+            <div class="flex-1 text-center py-2.5 text-xs text-white rounded-lg bg-gradient-to-r from-sky-400 to-cyan-600 font-bold shadow">WinGo 30s</div>
+        </div>
+
+        <!-- Timer Banner -->
+        <div class="timer-box-wingo">
+            <div>
+                <div style="font-size: 12px; color: #38bdf8; font-weight: 600;">WinGo 30s Real Time</div>
+                <div style="font-size: 13px; font-weight: 800; color: #e2e8f0; margin-top: 2px;" id="wingoPeriod">20260917001</div>
+            </div>
+            <div class="timer-clock-wingo" id="wingoTimer">00:30</div>
+        </div>
+
+        <!-- Betting Controls Container -->
+        <div style="position: relative;">
+            <div class="time-lock-wingo" id="timeLock">5</div>
+
+            <div class="color-group-wingo">
+                <button class="btn-action-wingo bg-emerald-600" onclick="openWingoModal('Green', '#10b981')">Green</button>
+                <button class="btn-action-wingo bg-purple-600" onclick="openWingoModal('Violet', '#8b5cf6')">Violet</button>
+                <button class="btn-action-wingo bg-red-600" onclick="openWingoModal('Red', '#ef4444')">Red</button>
+            </div>
+
+            <div class="number-grid-wingo">
+                <button class="btn-num-wingo half-0" onclick="openWingoModal('0', '#8b5cf6')">0</button>
+                <button class="btn-num-wingo bg-emerald-600" onclick="openWingoModal('1', '#10b981')">1</button>
+                <button class="btn-num-wingo bg-red-600" onclick="openWingoModal('2', '#ef4444')">2</button>
+                <button class="btn-num-wingo bg-emerald-600" onclick="openWingoModal('3', '#10b981')">3</button>
+                <button class="btn-num-wingo bg-red-600" onclick="openWingoModal('4', '#ef4444')">4</button>
+                <button class="btn-num-wingo half-5" onclick="openWingoModal('5', '#8b5cf6')">5</button>
+                <button class="btn-num-wingo bg-red-600" onclick="openWingoModal('6', '#ef4444')">6</button>
+                <button class="btn-num-wingo bg-emerald-600" onclick="openWingoModal('7', '#10b981')">7</button>
+                <button class="btn-num-wingo bg-red-600" onclick="openWingoModal('8', '#ef4444')">8</button>
+                <button class="btn-num-wingo bg-emerald-600" onclick="openWingoModal('9', '#10b981')">9</button>
+            </div>
+
+            <div class="big-small-group-wingo flex rounded-full overflow-hidden shadow">
+                <button onclick="openWingoModal('Big', '#f59e0b')" class="py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold flex-1 text-sm">Big (5-9)</button>
+                <button onclick="openWingoModal('Small', '#3b82f6')" class="py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold flex-1 text-sm">Small (0-4)</button>
+            </div>
+        </div>
+
+        <!-- History Table -->
+        <div class="mt-4">
+          <div class="text-xs font-bold text-gray-300 mb-2">গেম হিস্ট্রি</div>
+          <div class="bg-[#181b29] rounded-xl border border-gray-800 overflow-hidden">
+            <table class="history-table-wingo">
+              <thead>
+                <tr>
+                  <th>Period</th>
+                  <th>Number</th>
+                  <th>Big/Small</th>
+                  <th>Color</th>
+                </tr>
+              </thead>
+              <tbody id="wingoHistoryList"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- WinGo Betting Modal Drawer -->
+  <div id="wingoModalOverlay" class="modal-overlay-wingo" onclick="closeWingoModal()"></div>
+  <div id="wingoModal" class="modal-wingo">
+    <div class="text-base font-bold text-sky-400 text-center mb-3" id="wingoModalTitle">WinGo Bet</div>
+    
+    <div class="flex justify-between items-center mb-3 text-xs">
+        <span class="text-gray-400">Balance Unit</span>
+        <div>
+            <button class="px-2.5 py-1 bg-[#181b29] border border-gray-700 text-gray-300 rounded active" onclick="setWingoBase(1, this)">1</button>
+            <button class="px-2.5 py-1 bg-[#181b29] border border-gray-700 text-gray-300 rounded" onclick="setWingoBase(10, this)">10</button>
+            <button class="px-2.5 py-1 bg-[#181b29] border border-gray-700 text-gray-300 rounded" onclick="setWingoBase(100, this)">100</button>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center mb-3 text-xs">
+        <span class="text-gray-400">Multiplier</span>
+        <div class="flex gap-1">
+            <button class="px-2 py-1 bg-sky-500 text-slate-900 font-bold rounded text-xs" onclick="setWingoMultiplier(1, this)">X1</button>
+            <button class="px-2.5 py-1 bg-[#181b29] border border-gray-700 text-gray-300 rounded text-xs" onclick="setWingoMultiplier(5, this)">X5</button>
+            <button class="px-2.5 py-1 bg-[#181b29] border border-gray-700 text-gray-300 rounded text-xs" onclick="setWingoMultiplier(10, this)">X10</button>
+            <button class="px-2.5 py-1 bg-[#181b29] border border-gray-700 text-gray-300 rounded text-xs" onclick="setWingoMultiplier(50, this)">X50</button>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center mb-4 text-xs text-gray-400">
+        <span>Selection: <strong id="wingoModalSelection" class="text-sky-400">-</strong></span>
+        <span>Total: ৳<strong id="wingoTotalAmount" class="text-amber-400">10</strong></span>
+    </div>
+
+    <div class="flex gap-2">
+        <button onclick="closeWingoModal()" class="flex-1 py-2.5 bg-gray-700 text-white font-bold rounded-lg text-xs">বাতিল</button>
+        <button onclick="confirmWingoBet()" class="flex-1 py-2.5 bg-emerald-600 text-white font-bold rounded-lg text-xs shadow">কনফার্ম বেট</button>
+    </div>
+  </div>
 
   <!-- Bottom Navigation -->
   <nav id="bottomNav" class="hidden fixed bottom-0 inset-x-0 h-16 bg-surface-container/95 backdrop-blur-md z-40 flex items-center justify-around border-t border-surface-container-high px-2">
@@ -693,7 +569,24 @@
     let selectedWithdrawGateway = 'Bkash';
     let currentAdminSlider = 50;
 
-    let dynamicGameList = [{ title: 'FB77 Stuntcat Aviator', provider: 'crash', custom: true, image: 'https://spribe.co/assets/images/games/logo/logo-aviator.svg', rtp: '98.0%' }];
+    let dynamicGameList = [
+      { 
+        title: 'FB77 Stuntcat Aviator', 
+        provider: 'crash', 
+        custom: true, 
+        tab: 'custom-aviator',
+        image: 'https://spribe.co/assets/images/games/logo/logo-aviator.svg', 
+        rtp: '98.0%' 
+      },
+      { 
+        title: 'FB77 WinGo 30s', 
+        provider: 'wingo', 
+        custom: true, 
+        tab: 'wingo',
+        image: 'https://i.ibb.co/vzV2zDk/wingo-ball.png', 
+        rtp: '97.5%' 
+      }
+    ];
 
     window.onload = () => {
       checkSystemStatusRealtime();
@@ -702,9 +595,9 @@
       } else {
         showAuthOnly();
       }
+      initWingoEngine();
     };
-
-    function showAuthOnly() {
+          function showAuthOnly() {
       document.getElementById('mainHeader').classList.add('hidden');
       document.getElementById('bottomNav').classList.add('hidden');
       switchTab('auth');
@@ -728,13 +621,6 @@
           if(banner) {
             if(banner.title) document.getElementById('bannerTitle').innerText = banner.title;
             if(banner.sub) document.getElementById('bannerSub').innerText = banner.sub;
-          }
-        });
-        db.ref('games_list').on('value', (snapshot) => {
-          const games = snapshot.val();
-          if(games) {
-            dynamicGameList = Object.values(games);
-            renderGames(dynamicGameList);
           }
         });
 
@@ -775,14 +661,12 @@
       updateUI();
       if(db) {
         const cleanPhone = cleanUserPhone(currentUser.phone);
-        db.ref('users/' + cleanPhone).update({
-          balance: currentUser.balance
-        });
+        db.ref('users/' + cleanPhone).update({ balance: currentUser.balance });
       }
     }
 
     function downloadAppAPK() {
-      alert("📥 FB77 অ্যাপ ডাউনলোড শুরু হচ্ছে...");
+      alert("📥 FB77 অ্যাপডাউনলোড শুরু হচ্ছে...");
       const downloadUrl = "https://sakibullmia5-dot.github.io/FB77/";
       const a = document.createElement('a');
       a.href = downloadUrl;
@@ -816,10 +700,7 @@
       const rawPhone = document.getElementById('regPhone').value.trim();
       const pass = document.getElementById('regPass').value.trim();
 
-      if(!name || !rawPhone || !pass) { 
-        alert("সব তথ্য সঠিকভাবে পূরণ করুন!"); 
-        return; 
-      }
+      if(!name || !rawPhone || !pass) { alert("সব তথ্য সঠিকভাবে পূরণ করুন!"); return; }
 
       const phone = cleanUserPhone(rawPhone);
       const btn = document.getElementById('btnRegSubmit');
@@ -840,16 +721,8 @@
           btn.innerText = "রেজিস্ট্রেশন সম্পন্ন করুন";
         } else {
           const newUser = { 
-            name: name, 
-            phone: phone, 
-            pass: pass, 
-            balance: 0.00, 
-            totalDeposited: 0, 
-            blocked: false, 
-            joined: new Date().toLocaleDateString(), 
-            lastBonusClaim: 0 
+            name: name, phone: phone, pass: pass, balance: 0.00, totalDeposited: 0, blocked: false, joined: new Date().toLocaleDateString(), lastBonusClaim: 0 
           };
-          
           return db.ref('users/' + phone).set(newUser).then(() => {
             currentUser = newUser;
             localStorage.setItem('fb77_user', JSON.stringify(currentUser));
@@ -873,10 +746,7 @@
       const rawUserField = document.getElementById('logUser').value.trim();
       const passField = document.getElementById('logPass').value.trim();
 
-      if(!rawUserField || !passField) { 
-        alert("মোবাইল নম্বর ও পাসওয়ার্ড দিন!"); 
-        return; 
-      }
+      if(!rawUserField || !passField) { alert("মোবাইল নম্বর ও পাসওয়ার্ড দিন!"); return; }
 
       const phone = cleanUserPhone(rawUserField);
       const btn = document.getElementById('btnLoginSubmit');
@@ -896,27 +766,20 @@
 
         if(snapshot.exists()) {
           const userData = snapshot.val();
-          if(userData.blocked) {
-            alert("আপনার অ্যাকাউন্টটি ব্লক করা রয়েছে!");
-            return;
-          }
+          if(userData.blocked) { alert("আপনার অ্যাকাউন্টটি ব্লক করা রয়েছে!"); return; }
           if(String(userData.pass).trim() === passField) {
             currentUser = userData;
             localStorage.setItem('fb77_user', JSON.stringify(currentUser));
             localStorage.setItem('fb77_logged_in', 'true');
             isLoggedIn = true;
             initAppDashboard();
-          } else {
-            alert("ভুল পাসওয়ার্ড দেওয়া হয়েছে!");
-          }
-        } else {
-          alert("এই নম্বরে কোনো অ্যাকাউন্ট খুঁজে পাওয়া যায়নি!");
-        }
+          } else { alert("ভুল পাসওয়ার্ড দেওয়া হয়েছে!"); }
+        } else { alert("এই নম্বরে কোনো অ্যাকাউন্ট খুঁজে পাওয়া যায়নি!"); }
       }).catch((err) => {
         console.error(err);
         btn.disabled = false;
         btn.innerText = "লগইন করুন";
-        alert("লগইন করতে সমস্যা হয়েছে। ডাটাবেস রুলস চেক করুন।");
+        alert("লগইন করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
       });
     }
 
@@ -925,21 +788,12 @@
       if(!rawPhone) return;
       const phone = cleanUserPhone(rawPhone);
 
-      if(!db) {
-        alert("ফায়ারবেস কানেক্টেড নয়!");
-        return;
-      }
+      if(!db) { alert("ফায়ারবেস কানেক্টেড নয়!"); return; }
 
       db.ref('users/' + phone).once('value').then((snap) => {
-        if(snap.exists()) {
-          const pass = snap.val().pass;
-          alert("🔑 আপনার পাসওয়ার্ড হলো: " + pass);
-        } else {
-          alert("এই নম্বরে কোনো অ্যাকাউন্ট খুঁজে পাওয়া যায়নি!");
-        }
-      }).catch(err => {
-        alert("ত্রুটি: " + err.message);
-      });
+        if(snap.exists()) { alert("🔑 আপনার পাসওয়ার্ড হলো: " + snap.val().pass); }
+        else { alert("এই নম্বরে কোনো অ্যাকাউন্ট খুঁজে পাওয়া যায়নি!"); }
+      }).catch(err => { alert("ত্রুটি: " + err.message); });
     }
 
     function logoutUser() {
@@ -949,7 +803,8 @@
       isLoggedIn = false;
       showAuthOnly();
     }
-          function initAppDashboard() {
+
+    function initAppDashboard() {
       document.getElementById('mainHeader').classList.remove('hidden');
       document.getElementById('bottomNav').classList.remove('hidden');
       updateUI();
@@ -968,23 +823,19 @@
       document.getElementById('headerBalance').innerText = balStr;
       document.getElementById('balance').innerText = balStr; 
       document.getElementById('profileBalance').innerText = balStr;
+      document.getElementById('wingoBalanceDisplay').innerText = balStr;
       document.getElementById('profileUsernameText').innerText = currentUser.name || "User";
       document.getElementById('profilePhoneText').innerText = "মোবাইল: " + currentUser.phone;
     }
 
     function switchTab(tabId) {
-      if (!isLoggedIn && tabId !== 'auth') {
-        showAuthOnly();
-        return;
-      }
+      if (!isLoggedIn && tabId !== 'auth') { showAuthOnly(); return; }
       updateUI();
       document.querySelectorAll('main > section.view-section').forEach(el => el.classList.add('hidden'));
       const target = document.getElementById('tab-' + tabId);
       if(target) target.classList.remove('hidden');
       
-      if(tabId === 'custom-aviator') {
-        setTimeout(resizeCanvas, 50);
-      }
+      if(tabId === 'custom-aviator') resizeCanvas();
       if(tabId === 'withdraw') checkWithdrawBindingStatus();
       window.scrollTo(0, 0);
     }
@@ -995,15 +846,15 @@
       list.forEach(g => {
         const card = document.createElement('div');
         card.className = "bg-surface-container p-3 rounded-2xl cursor-pointer border border-surface-container-high hover:border-primary transition flex flex-col justify-between";
-        card.onclick = () => { switchTab('custom-aviator'); };
+        card.onclick = () => { switchTab(g.tab || 'custom-aviator'); };
         card.innerHTML = `
           <div class="h-28 bg-surface-container-low rounded-xl relative overflow-hidden flex items-center justify-center p-2">
-            <img src="${g.image}" class="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(255,50,50,0.6)]"/>
+            <img src="${g.image}" class="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(255,50,50,0.6)]" onerror="this.src='https://spribe.co/assets/images/games/logo/logo-aviator.svg'"/>
             <span class="absolute top-2 left-2 text-[9px] bg-secondary/25 text-secondary px-1.5 py-0.5 rounded uppercase font-bold">RTP ${g.rtp || '98%'}</span>
           </div>
           <div class="mt-2">
             <h4 class="text-xs font-bold text-gray-200 truncate">${g.title}</h4>
-            <span class="text-[10px] text-primary font-bold">Live Stuntcat ●</span>
+            <span class="text-[10px] text-primary font-bold">Live ●</span>
           </div>
         `;
         grid.appendChild(card);
@@ -1182,50 +1033,8 @@
       if(db) db.ref('withdraws/' + withdrawRequest.id).set(withdrawRequest);
 
       alert("উত্তোলনের রিকোয়েস্ট জমা হয়েছে!");
-         }
-          // --- Audio Synth Engine ---
-    let audioCtx = null;
-    function initAudio() {
-        if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-    }
-
-    function playSound(type) {
-        if (!audioCtx) return;
-        try {
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-            if (type === 'beep') {
-                let osc = audioCtx.createOscillator();
-                let gain = audioCtx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.1);
-            } else if (type === 'crash') {
-                let osc = audioCtx.createOscillator();
-                let gain = audioCtx.createGain();
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(150, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.4);
-                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.4);
-            }
-        } catch(e){}
-    }
-
-    // Canvas Engine Logic (Vector Real Aviator Red Plane)
-    const canvas = document.getElementById('gameCanvas');
+      }
+          const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const statusText = document.getElementById('statusText');
     const countdownBox = document.getElementById('countdownBox');
@@ -1238,11 +1047,15 @@
 
     function resizeCanvas() {
         if (!canvas || !canvas.parentElement) return;
-        const rect = canvas.parentElement.getBoundingClientRect();
-        canvas.width = rect.width;
-        canvas.height = rect.height;
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
     }
     window.addEventListener('resize', resizeCanvas);
+
+    const planeImage = new Image();
+    planeImage.src = 'https://spribe.co/assets/images/games/logo/logo-aviator.svg';
+    let isImageLoaded = false;
+    planeImage.onload = () => { isImageLoaded = true; };
 
     let gameState = 'WAITING';
     let multiplier = 1.00;
@@ -1304,7 +1117,6 @@
             timeLeft -= 0.1;
             timerEl.textContent = timeLeft.toFixed(1);
             progressBar.style.width = ((timeLeft / 5.0) * 100) + '%';
-            if (Math.abs(timeLeft % 1) < 0.05) playSound('beep');
 
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
@@ -1340,7 +1152,6 @@
                 gameState = 'CRASHED';
                 statusText.textContent = 'FLEW AWAY!';
                 statusText.classList.add('flew-away');
-                playSound('crash');
                 addHistory(crashPoint);
 
                 isBet1Placed = false;
@@ -1362,86 +1173,14 @@
         }
 
         requestAnimationFrame(animate);
-      }
-          // --- Vector Red Aviator Plane with Rotating Propeller ---
-    function drawRealAviatorPlane(ctx, time) {
-        ctx.save();
-        ctx.scale(0.85, 0.85);
-
-        // Plane Tail Flame / Smoke
-        ctx.beginPath();
-        ctx.fillStyle = "rgba(255, 69, 0, 0.6)";
-        ctx.moveTo(-35, 0);
-        ctx.lineTo(-50 - Math.random() * 10, -5);
-        ctx.lineTo(-50 - Math.random() * 10, 5);
-        ctx.closePath();
-        ctx.fill();
-
-        // Main Body (Fuselage)
-        ctx.fillStyle = '#e50914';
-        ctx.beginPath();
-        ctx.moveTo(30, 0);
-        ctx.bezierCurveTo(20, -14, -20, -14, -35, -4);
-        ctx.lineTo(-35, 4);
-        ctx.bezierCurveTo(-20, 14, 20, 14, 30, 0);
-        ctx.fill();
-
-        // Cockpit Glass
-        ctx.fillStyle = '#111';
-        ctx.beginPath();
-        ctx.ellipse(5, -4, 10, 5, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,0.7)';
-        ctx.beginPath();
-        ctx.ellipse(7, -5, 4, 2, 0, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Wing
-        ctx.fillStyle = '#b30006';
-        ctx.beginPath();
-        ctx.moveTo(10, 2);
-        ctx.lineTo(-12, 16);
-        ctx.lineTo(-5, 16);
-        ctx.lineTo(18, 2);
-        ctx.closePath();
-        ctx.fill();
-
-        // Tail
-        ctx.beginPath();
-        ctx.moveTo(-28, -2);
-        ctx.lineTo(-38, -16);
-        ctx.lineTo(-30, -16);
-        ctx.lineTo(-22, -2);
-        ctx.closePath();
-        ctx.fill();
-
-        // Propeller Nose Cap
-        ctx.fillStyle = '#111';
-        ctx.beginPath();
-        ctx.arc(31, 0, 4, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Animated Rotating Propeller Blur
-        let propAngle = time * 45;
-        ctx.save();
-        ctx.translate(33, 0);
-        ctx.rotate(propAngle);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-        ctx.fillRect(-1.5, -16, 3, 32);
-        ctx.restore();
-
-        ctx.restore();
     }
 
     function drawScene(p, elapsedTime) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         let bgLightColor = '#0d233a'; 
-        if (multiplier >= 10.00) {
-            bgLightColor = '#4a0d34'; 
-        } else if (multiplier >= 2.00) {
-            bgLightColor = '#2a0d3a'; 
-        }
+        if (multiplier >= 10.00) { bgLightColor = '#4a0d34'; }
+        else if (multiplier >= 2.00) { bgLightColor = '#2a0d3a'; }
 
         let bgGradient = ctx.createRadialGradient(
             0, canvas.height, 0,
@@ -1454,17 +1193,17 @@
 
         const startX = 0;
         const startY = canvas.height;
-        const endX = startX + (canvas.width - 70) * p;
-        const endY = startY - (canvas.height - 70) * Math.pow(p, 1.4);
+        const endX = startX + (canvas.width - 90) * p;
+        const endY = startY - (canvas.height - 90) * Math.pow(p, 1.4);
 
         const carpetColor = '#e50914';
-        const carpetFill = 'rgba(229, 9, 20, 0.35)';
+        const carpetFill = 'rgba(229, 9, 20, 0.4)';
 
         ctx.beginPath();
         ctx.moveTo(startX, startY);
         ctx.quadraticCurveTo(startX + (endX - startX) / 2, startY, endX, endY);
         ctx.strokeStyle = carpetColor;
-        ctx.lineWidth = 3.5;
+        ctx.lineWidth = 4;
         ctx.stroke();
 
         ctx.lineTo(endX, startY);
@@ -1473,31 +1212,44 @@
         ctx.fill();
 
         ctx.save();
+        
         let floatY = (gameState === 'FLYING') ? Math.sin(elapsedTime * 14) * 2.5 : 0;
         ctx.translate(endX, endY + floatY);
         ctx.shadowColor = carpetColor;
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 15;
 
-        drawRealAviatorPlane(ctx, elapsedTime);
+        if (isImageLoaded) {
+            const cropX = 0;
+            const cropY = 0;
+            const cropWidth = planeImage.width;
+            const cropHeight = planeImage.height * 0.58;
+
+            const renderWidth = 85;
+            const renderHeight = 45;
+
+            ctx.drawImage(
+                planeImage,
+                cropX, cropY, cropWidth, cropHeight,
+                -renderWidth / 2, -renderHeight / 2, renderWidth, renderHeight
+            );
+        } else {
+            ctx.fillStyle = carpetColor;
+            ctx.fillRect(-20, -10, 40, 20);
+        }
         ctx.restore();
     }
 
     function addHistory(val) {
         const item = document.createElement('span');
         item.className = 'history-item';
-        if (val >= 10.00) {
-            item.style.color = '#c77dff';
-        } else if (val >= 2.00) {
-            item.style.color = '#9b51e0';
-        } else {
-            item.style.color = '#3498db';
-        }
+        if (val >= 10.00) { item.style.color = '#c77dff'; }
+        else if (val >= 2.00) { item.style.color = '#9b51e0'; }
+        else { item.style.color = '#3498db'; }
         item.textContent = val.toFixed(2) + 'x';
         historyBar.prepend(item);
     }
 
     function handleBetAction(btn, num) {
-        initAudio();
         let betInput = document.getElementById('bet' + num);
         let amount = parseFloat(betInput.value);
         if (isNaN(amount) || amount <= 0) amount = 10.00;
@@ -1509,9 +1261,7 @@
                         syncUserBalanceToFirebase(currentUser.balance - amount);
                         bet1Amount = amount;
                         isBet1Placed = true;
-                    } else {
-                        alert('পর্যাপ্ত ব্যালেন্স নেই!');
-                    }
+                    } else { alert('পর্যাপ্ত ব্যালেন্স নেই!'); }
                 } else {
                     syncUserBalanceToFirebase(currentUser.balance + bet1Amount);
                     isBet1Placed = false;
@@ -1522,9 +1272,7 @@
                         syncUserBalanceToFirebase(currentUser.balance - amount);
                         bet2Amount = amount;
                         isBet2Placed = true;
-                    } else {
-                        alert('পর্যাপ্ত ব্যালেন্স নেই!');
-                    }
+                    } else { alert('পর্যাপ্ত ব্যালেন্স নেই!'); }
                 } else {
                     syncUserBalanceToFirebase(currentUser.balance + bet2Amount);
                     isBet2Placed = false;
@@ -1589,6 +1337,160 @@
     document.getElementById('bet2').addEventListener('input', () => { if(gameState==='WAITING') updateButtonUI(btn2, 2); });
 
     startCountdown();
+
+    let wingoTimerVal = 30;
+    let currentWingoPeriod = 20260917001;
+    let wingoBase = 1;
+    let wingoMultiplierVal = 1;
+    let activeWingoSelection = null;
+    let activeWingoBetPlaced = null;
+
+    let wingoHistoryList = [
+      { period: '20260917000', num: 7, size: 'Big', color: 'Green' },
+      { period: '20260916999', num: 0, size: 'Small', color: 'Violet' },
+      { period: '20260916998', num: 3, size: 'Small', color: 'Green' }
+    ];
+
+    function initWingoEngine() {
+      renderWingoHistory();
+      setInterval(() => {
+        wingoTimerVal--;
+        if (wingoTimerVal <= 5 && wingoTimerVal > 0) {
+          closeWingoModal();
+          document.getElementById('timeLock').style.display = 'flex';
+          document.getElementById('timeLock').innerText = wingoTimerVal;
+        } else {
+          document.getElementById('timeLock').style.display = 'none';
+        }
+
+        if (wingoTimerVal < 0) {
+          wingoTimerVal = 30;
+          evaluateWingoRound();
+          currentWingoPeriod++;
+          document.getElementById('wingoPeriod').innerText = currentWingoPeriod;
+        }
+        let secStr = wingoTimerVal < 10 ? '0' + wingoTimerVal : wingoTimerVal;
+        document.getElementById('wingoTimer').innerText = '00:' + secStr;
+      }, 1000);
+    }
+
+    function openWingoModal(selection) {
+      if (wingoTimerVal <= 5) {
+        alert("⚠️ সময় শেষ! পরবর্তী রাউন্ডের জন্য অপেক্ষা করুন।");
+        return;
+      }
+      activeWingoSelection = selection;
+      wingoBase = 1;
+      wingoMultiplierVal = 1;
+
+      document.getElementById('wingoModalTitle').innerText = `WinGo - ${selection}`;
+      document.getElementById('wingoModalSelection').innerText = selection;
+      updateWingoTotalAmount();
+
+      document.getElementById('wingoModalOverlay').style.display = 'block';
+      document.getElementById('wingoModal').style.display = 'block';
+    }
+
+    function closeWingoModal() {
+      document.getElementById('wingoModalOverlay').style.display = 'none';
+      document.getElementById('wingoModal').style.display = 'none';
+    }
+
+    function setWingoBase(val, el) {
+      wingoBase = val;
+      el.parentNode.querySelectorAll('button').forEach(b => b.classList.remove('bg-sky-500', 'text-slate-900', 'font-bold'));
+      el.classList.add('bg-sky-500', 'text-slate-900', 'font-bold');
+      updateWingoTotalAmount();
+    }
+
+    function setWingoMultiplier(mult, el) {
+      wingoMultiplierVal = mult;
+      el.parentNode.querySelectorAll('button').forEach(b => {
+        b.className = "px-2 py-1 bg-[#181b29] border border-gray-700 text-gray-300 rounded text-xs";
+      });
+      el.className = "px-2 py-1 bg-sky-500 text-slate-900 font-bold rounded text-xs";
+      updateWingoTotalAmount();
+    }
+
+    function updateWingoTotalAmount() {
+      const total = wingoBase * wingoMultiplierVal;
+      document.getElementById('wingoTotalAmount').innerText = total;
+    }
+
+    function confirmWingoBet() {
+      if (!currentUser) return;
+      const totalAmt = wingoBase * wingoMultiplierVal;
+      if (currentUser.balance < totalAmt) {
+        alert("পর্যাপ্ত ব্যালেন্স নেই!");
+        return;
+      }
+
+      syncUserBalanceToFirebase(currentUser.balance - totalAmt);
+      activeWingoBetPlaced = { selection: activeWingoSelection, amount: totalAmt };
+      closeWingoModal();
+      alert(`✅ সফলভাবে ৳${totalAmt} বেট কনফার্ম হয়েছে (${activeWingoSelection})`);
+    }
+
+    function evaluateWingoRound() {
+      const resNum = Math.floor(Math.random() * 10);
+      const resSize = resNum >= 5 ? 'Big' : 'Small';
+      let resColor = 'Green';
+      
+      if(resNum === 0) resColor = 'Violet';
+      else if(resNum === 5) resColor = 'Violet';
+      else if(resNum % 2 === 0) resColor = 'Red';
+      else resColor = 'Green';
+
+      wingoHistoryList.unshift({
+        period: currentWingoPeriod,
+        num: resNum,
+        size: resSize,
+        color: resColor
+      });
+      if(wingoHistoryList.length > 10) wingoHistoryList.pop();
+      renderWingoHistory();
+
+      if (activeWingoBetPlaced && currentUser) {
+        let win = false;
+        let multiplierRate = 0;
+        const sel = activeWingoBetPlaced.selection;
+
+        if (sel === 'Green' && resColor === 'Green') { win = true; multiplierRate = 2; }
+        else if (sel === 'Red' && resColor === 'Red') { win = true; multiplierRate = 2; }
+        else if (sel === 'Violet' && resColor === 'Violet') { win = true; multiplierRate = 4.5; }
+        else if (sel === 'Big' && resSize === 'Big') { win = true; multiplierRate = 2; }
+        else if (sel === 'Small' && resSize === 'Small') { win = true; multiplierRate = 2; }
+        else if (!isNaN(parseInt(sel)) && parseInt(sel) === resNum) { win = true; multiplierRate = 9; }
+
+        if (win) {
+          const winAmt = activeWingoBetPlaced.amount * multiplierRate;
+          syncUserBalanceToFirebase(currentUser.balance + winAmt);
+          alert(`🎉 অভিনন্দন! আপনি WinGo রাউন্ডে ৳${winAmt.toFixed(2)} জিতেছেন!`);
+        }
+        activeWingoBetPlaced = null;
+      }
+    }
+
+    function renderWingoHistory() {
+      const body = document.getElementById('wingoHistoryList');
+      if(!body) return;
+      body.innerHTML = '';
+      wingoHistoryList.forEach(h => {
+        let colorClass = "text-emerald-400";
+        if(h.color === 'Red') colorClass = "text-red-400";
+        if(h.color === 'Violet') colorClass = "text-purple-400";
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${h.period}</td>
+          <td class="font-bold text-white">${h.num}</td>
+          <td>${h.size}</td>
+          <td class="font-bold ${colorClass}">${h.color}</td>
+        `;
+        body.appendChild(tr);
+      });
+    }
   </script>
 </body>
 </html>
+
